@@ -8,8 +8,8 @@ export const router = createBrowserRouter([
         Component:RootLayout,
         children:[
             {
-                index:true,
-                Component:Home
+                path:'/',
+                Component:Home,
             }
         ]
     }
