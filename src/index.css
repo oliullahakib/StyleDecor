@@ -11,7 +11,12 @@
   --color-accent:#8A8782;
   --color-accent-content: #BE9671;
 }
-
+body{
+  background: #FAF6F3;
+}
+a.active{
+  @apply bg-primary text-white rounded-full font-bold
+}
 
 .garamond-font {
   font-family: "EB Garamond", serif;

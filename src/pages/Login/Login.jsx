@@ -50,7 +50,7 @@ const Login = () => {
                         </p>}
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn btn-primary text-black mt-4">Login</button>
-                        <p className='font-semibold'>New to ZapShift? Please <Link state={location?.state} to={"/register"} className='text-green-400 underline'>Register</Link></p>
+                        <p className='font-semibold'>New to StyleDecor? Please <Link state={location?.state} to={"/register"} className='text-green-400 underline'>Register</Link></p>
                 </form>
             </div>
         </div>

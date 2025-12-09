@@ -1,10 +1,31 @@
 import React from 'react';
-import MyDiv from '../../components/MyDiv';
+import { Link, NavLink } from 'react-router';
+import toast from 'react-hot-toast';
+import useAuth from '../../hook/useAuth';
 
 const Navbar = () => {
+    const { user, logOutUser } = useAuth()
+    const links = <>
+        <li><NavLink to={'/'} className={'text-accent'}>Home</NavLink></li>
+        <li><NavLink to={'/services'} className={'text-accent'}>Services</NavLink></li>
+        <li><NavLink to={'/service-coverage'} className={'text-accent'}>Coverage</NavLink></li>
+        <li><NavLink to={'/about-us'} className={'text-accent'}>About Us</NavLink></li>
+        <li><NavLink to={'/be-a-decorator'} className={'text-accent'}>Be a Decoretor</NavLink></li>
+       {user&& <>
+
+       <li><NavLink to={'/dashboard'} className={'text-accent-content font-bold '}>Dashboard</NavLink></li>
+       </>}
+
+    </>
+    const hanldeLogout = () => {
+        logOutUser()
+            .then(() => {
+                toast.success("Logout")
+            })
+    }
     return (
-        <MyDiv>
-            <div className="navbar bg-base-100 shadow-sm">
+       
+            <div className="navbar sticky top-0 z-10 bg-base-200 container mx-auto rounded-xl shadow-sm ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -13,39 +34,36 @@ const Navbar = () => {
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li><a>Item 1</a></li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Item 3</a></li>
+                            {links}
+                            {
+                                user ? <button onClick={hanldeLogout} className='btn btn-warning'>Logout</button> : <>
+                                    <Link to={'/login'} className="btn text-accent mr-5">Sign In</Link>
+                                    <Link to={'/register'} className="btn btn-primary text-black ">Register</Link>
+                                </>
+                            }
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                   <Link to={"/"}>StyleDecor</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <details>
-                                <summary>Parent</summary>
-                                <ul className="p-2 bg-base-100 w-40 z-1">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li><a>Item 3</a></li>
+
+                        {links}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn btn-primary">Button</a>
+                <div className="navbar-end ml-5 hidden lg:flex ">
+                    {
+                        user ?<div className='flex gap-3'>
+                            <img className='w-12 h-12 rounded-full border p-1' src={user?.photoURL} alt="" />
+                             <button onClick={hanldeLogout} className='btn btn-warning'>Logout</button>
+                        </div> : <>
+                            <Link to={'/login'} className="btn btn-secondary mr-2">Sign In</Link>
+                            <Link to={'/register'} className="btn btn-primary ">Register</Link>
+                        </>
+                    }
                 </div>
             </div>
-        </MyDiv>
+      
     );
 };
 
