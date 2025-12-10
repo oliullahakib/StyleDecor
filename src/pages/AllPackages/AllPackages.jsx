@@ -21,7 +21,7 @@ const AllPackages = () => {
         <MyDiv >
            <SectionTitle title={'All Packages'}/>
            <h2 className='text-xl font-semibold my-8 pl-5'>All Packages <span className='text-primary font-bold'>({packages.length})</span> </h2>
-           <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 px-3 mb-8'>
+           <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 px-3 mb-8'>
             {
                 packages.map(service=><PackageCard key={service._id} service={service}/>)
             }
