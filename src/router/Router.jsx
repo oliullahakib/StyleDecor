@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home/Home";
 import ServiceCoveragePage from "../pages/ServiceCoverage/ServiceCoveragePage";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import AllPackages from "../pages/AllPackages/AllPackages";
 
 
 export const router = createBrowserRouter([
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             {
                 path:"register",
                 Component:Register
+            },
+            {
+                path:"all-packages",
+                Component:AllPackages
             }
         ]
     }
