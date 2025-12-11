@@ -15,6 +15,7 @@ export const router = createBrowserRouter([
             {
                 path:'/',
                 Component:Home,
+                loader:()=>fetch(`http://localhost:3000/packages?limit=${4}`)
             },
             {
                 path:'service-coverage',

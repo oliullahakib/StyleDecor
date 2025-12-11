@@ -4,7 +4,6 @@ import SectionTitle from '../../Shared/SectionTitle';
 import MyDiv from '../../../components/MyDiv';
 const ServiceCoverage = ({serviceCenters}) => {
     const position = [23.68, 90.35]
-   console.log(serviceCenters)
     return (
         <MyDiv>
             <SectionTitle title={'Service Coverage'}/>
@@ -18,7 +17,7 @@ const ServiceCoverage = ({serviceCenters}) => {
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
                         {
-                            serviceCenters.map(center => <Marker position={[center.latitude, center.longitude]}>
+                            serviceCenters.map((center,i) => <Marker key={i} position={[center.latitude, center.longitude]}>
                                 <Popup>
                                     <strong>{center.district}</strong> <br /> {center.covered_area.join(', ')}
 
