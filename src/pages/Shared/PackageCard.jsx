@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const PackageCard = ({ service }) => {
     return (
@@ -14,7 +15,7 @@ const PackageCard = ({ service }) => {
                 <p >Category: <span className='text-accent'>{service.service_category}</span> </p>
                 <div className=" flex-1 flex flex-col justify-end">
                     <p className='mt-5 text-sm md:text-xl'>Cost: <span className='text-accent-content font-bold'>{service.cost}tk</span> /<span className='text-[8px] lg:text-sm tex-accent'>{service.unit}</span> </p>
-                   <button className='btn btn-primary mt-3'>View Details</button>
+                   <Link to={`/package/${service._id}`} className='btn btn-primary mt-3'>View Details</Link>
                 </div>
             </div>
          

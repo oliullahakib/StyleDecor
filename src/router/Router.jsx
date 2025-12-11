@@ -5,6 +5,7 @@ import ServiceCoveragePage from "../pages/ServiceCoverage/ServiceCoveragePage";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import AllPackages from "../pages/AllPackages/AllPackages";
+import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 
 
 export const router = createBrowserRouter([
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
                 path:'service-coverage',
                 Component:ServiceCoveragePage,
                 loader:()=>fetch('/serviceCenters.json')
+            },
+            {
+                path:`/package/:id`,
+                Component:ServiceDetails
             },
             {
                 path:"login",

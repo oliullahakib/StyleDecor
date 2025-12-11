@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 const Footer = () => {
     return (
         <footer className="footer footer-horizontal footer-center bg-base-300 text-base-content rounded p-10">
-            <nav className="grid grid-flow-col gap-4">
+            <nav className="flex flex-col md:flex-row gap-4">
          <NavLink to={'/'} className={'text-accent p-2'}>Home</NavLink>
         <NavLink to={'/all-packages'} className={'text-accent p-2'}>All Packages</NavLink>
         <NavLink to={'/service-coverage'} className={'text-accent p-2'}>Coverage</NavLink>
@@ -49,7 +49,7 @@ const Footer = () => {
                 </div>
             </nav>
             <aside>
-                <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+                <p>Copyright © {new Date().getFullYear()} - All right reserved by StyleDecor Ltd</p>
             </aside>
         </footer>
     );
