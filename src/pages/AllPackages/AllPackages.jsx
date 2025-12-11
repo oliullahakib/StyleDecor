@@ -5,20 +5,36 @@ import useAxiosSecure from '../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import PackageCard from '../Shared/PackageCard';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+
 
 
 const AllPackages = () => {
     const [search, setSearch] = useState('')
     const [type, setType] = useState('')
     const [filterHidden, setFilterHidden] = useState(true)
+    const [minPrice, setMinPrice] = useState(0)
+    const [maxPrice, setMaxPrice] = useState(0)
     const axiosSecure = useAxiosSecure()
     const { data: packages = [] } = useQuery({
-        queryKey: ['packages', search, type],
+        queryKey: ['packages', search, type,minPrice,maxPrice],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/packages?search=${search}&type=${type}`)
+            const res = await axiosSecure.get(`/packages?search=${search}&type=${type}&min=${minPrice}&max=${maxPrice}`)
             return res.data
         }
     })
+
+    const handlePriceBySort = (e) => {
+        e.preventDefault()
+        const minPrice = parseInt(e.target.minPrice.value)
+        const maxPrice = parseInt(e.target.maxPrice.value)
+        // validation 
+        if (minPrice < 0 || maxPrice < 0) return toast.error("Filter is not valid")
+        if (maxPrice < minPrice) return toast.error("Max have to be bigger then Min price")
+         // assinge value 
+        setMinPrice(minPrice)
+        setMaxPrice(maxPrice)
+    }
     return (
         <MyDiv className={''} >
             <div className='flex flex-col lg:flex-row items-center justify-between px-3' >
@@ -36,11 +52,11 @@ const AllPackages = () => {
                 </div>
                 {/* sort section  */}
                 <div>
-                    <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "hidden"} mt-3 mb-4 btn-secondary`}>Filter {filterHidden&&<FaArrowDown/>  }</button>
+                    <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "hidden"} mt-3 mb-4 btn-secondary`}>Filter {filterHidden && <FaArrowDown />}</button>
                     {
                         !filterHidden && <>
                             <div className='flex flex-col-reverse lg:flex-row my-3 gap-3 items-center'>
-                                <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "mt-3 mb-4 btn-secondary"}`}>Filter {!filterHidden&& <FaArrowUp/> }</button>
+                                <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "mt-3 mb-4 btn-secondary"}`}>Filter {!filterHidden && <FaArrowUp />}</button>
                                 {/* type sort */}
                                 <div>
                                     <select onChange={(e) => setType(e.target.value)} defaultValue="sort by type" className="select">
@@ -53,13 +69,13 @@ const AllPackages = () => {
                                     </select>
                                 </div>
                                 {/* price */}
-                                <div className='flex flex-col md:flex-row gap-3 border px-3 py-2 rounded-2xl'>
-                                   <div className='flex flex-col md:flex-row gap-3'>
-                                    <input type="text" className='input' placeholder="min price" />  
-                                   <input type="text" className='input' placeholder="max price" />
-                                    </div>  
+                                <form onSubmit={handlePriceBySort} className='flex flex-col md:flex-row gap-3 border border-secondary px-3 py-2 rounded-2xl'>
+                                    <div className='flex flex-col md:flex-row gap-3'>
+                                        <input required name="minPrice" type="number" className='input' placeholder="min price" />
+                                        <input required name="maxPrice" type="number" className='input' placeholder="max price" />
+                                    </div>
                                     <button className='btn btn-primary'>Apply</button>
-                                </div>
+                                </form>
                             </div>
                         </>
                     }
