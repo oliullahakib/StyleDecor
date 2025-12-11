@@ -1,13 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Footer = () => {
     return (
         <footer className="footer footer-horizontal footer-center bg-base-300 text-base-content rounded p-10">
             <nav className="grid grid-flow-col gap-4">
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
+         <NavLink to={'/'} className={'text-accent p-2'}>Home</NavLink>
+        <NavLink to={'/all-packages'} className={'text-accent p-2'}>All Packages</NavLink>
+        <NavLink to={'/service-coverage'} className={'text-accent p-2'}>Coverage</NavLink>
+        <NavLink to={'/about-us'} className={'text-accent p-2'}>About Us</NavLink>
+        <NavLink to={'/be-a-decorator'} className={'text-accent p-2'}>Be a Decoretor</NavLink>
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4">
