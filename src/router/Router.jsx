@@ -8,46 +8,55 @@ import AllPackages from "../pages/AllPackages/AllPackages";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
+import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 
 
 export const router = createBrowserRouter([
     {
-        path:"/",
-        Component:RootLayout,
-        children:[
+        path: "/",
+        Component: RootLayout,
+        children: [
             {
-                path:'/',
-                Component:Home,
-                loader:()=>fetch(`http://localhost:3000/packages?limit=${4}`)
+                path: '/',
+                Component: Home,
+                loader: () => fetch(`http://localhost:3000/packages?limit=${4}`)
             },
             {
-                path:'service-coverage',
-                Component:ServiceCoveragePage,
-                loader:()=>fetch('/serviceCenters.json')
+                path: 'service-coverage',
+                Component: ServiceCoveragePage,
+                loader: () => fetch('/serviceCenters.json')
             },
             {
-                path:`/package/:id`,
-                Component:ServiceDetails
+                path: `/package/:id`,
+                Component: ServiceDetails
             },
             {
-                path:"login",
-                Component:Login
+                path: "login",
+                Component: Login
             },
             {
-                path:"register",
-                Component:Register
+                path: "register",
+                Component: Register
             },
             {
-                path:"all-packages",
-                Component:AllPackages
+                path: "all-packages",
+                Component: AllPackages
             }
         ]
     },
     {
-        path:'/dashboard',
-        element:<DashboardLayout/>,
-        children:[
-            {path:'my-profile',Component:MyProfile}
+        path: '/dashboard',
+        element: <DashboardLayout />,
+        children: [
+            {
+                path:'my-profile',
+                Component: MyProfile
+            },
+            {
+                path:'my-bookings',
+                Component: MyBookings
+            }
+
         ]
     }
 ])

@@ -1,0 +1,89 @@
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
+import useAuth from '../../../hook/useAuth';
+
+const MyBookings = () => {
+    const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
+    const { data: services = [], refetch } = useQuery({
+        queryKey: ['my-bookings', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/dashboard/my-bookings?email=${user?.email}`)
+            return res.data
+
+        }
+    })
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/package/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount) {
+                            refetch()
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your order has been deleted.",
+                                icon: "success"
+                            });
+                        }
+
+                    })
+
+            }
+        });
+    }
+    
+    return (
+        <div>
+          <h2 className='text-3xl'> Bookings <span className='font-bold'>({services.length})</span> </h2>
+            <div>
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>SLNo</th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Traking ID</th>
+                                <th>Payment</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+                            {
+                                services.map((service, i) => <tr key={service._id} className="bg-base-200">
+                                    <th>{i + 1}</th>
+                                    <td className='font-bold'>{service.service_name}</td>
+                                    <td>{service.cost}</td>
+                                    <td>{service.trakingId}</td>
+                                    <td className={`${service?.paymentStatus ==="paid"&&'text-green-400'}`}>{service?.paymentStatus || "Unpaid"}</td>
+                                    <td className='space-x-3 '>
+                                       {service.paymentStatus==="paid"?"": <button className="btn btn-success text-black">Pay</button>}
+                                        <button onClick={() => handleDelete(service._id)} className="btn hover:btn-error"><FaTrashAlt /></button>
+                                    </td>
+                                </tr>)
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default MyBookings;
