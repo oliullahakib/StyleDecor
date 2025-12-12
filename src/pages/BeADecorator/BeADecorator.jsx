@@ -9,7 +9,6 @@ const BeADecorator = () => {
     const axiosSecure = useAxiosSecure()
     const {register,handleSubmit,reset}=useForm()
     const handleDecoretor = (data)=>{
-        console.log(data)
         data.email = user?.email
         axiosSecure.post('/decorator',data)
         .then(res=>{

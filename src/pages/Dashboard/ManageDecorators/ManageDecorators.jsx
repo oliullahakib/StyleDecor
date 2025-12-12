@@ -68,7 +68,7 @@ const ManageDecorators = () => {
                                     <th>SLNo</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>District</th>
+                                    <th>Service Type</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -80,10 +80,10 @@ const ManageDecorators = () => {
                                         <th>{i + 1}</th>
                                         <td>{decorator.name}</td>
                                         <td>{decorator.email}</td>
-                                        <td>{decorator.district}</td>
-                                        <td className={decorator.status === "accepted" ? 'text-green-500' : decorator.status === "rejected" ? "text-red-500" : "text-black"}>{decorator.status}</td>
+                                        <td>{decorator.service_type}</td>
+                                        <td className={decorator.applyStatus === "accepted" ? 'text-green-500' : decorator.applyStatus === "rejected" ? "text-red-500" : "text-black"}>{decorator.applyStatus}</td>
                                         <td className='space-x-3'>
-                                            <button disabled={decorator.applyStatus === "accepted" ? true : false} onClick={() => updateStatus(decorator, "accepted")} className="btn btn-primary text-black"><FaUserCheck /></button>
+                                            <button disabled={decorator.applyStatus === "accepted" ? true : false} onClick={() => updateStatus(decorator, "accepted")} className="btn btn-success text-black"><FaUserCheck /></button>
                                             <button disabled={decorator.applyStatus === "rejected" ? true : false} onClick={() => updateStatus(decorator, "rejected")} className="btn btn-error text-black"><FaUserTimes /></button>
                                             <button onClick={() => handleDeletedecorator(decorator._id)} className="btn hover:btn-error"><FaTrashAlt /></button>
                                         </td>
