@@ -14,6 +14,7 @@ import MyPaymentHistory from "../pages/Dashboard/MyPaymentHistory/MyPaymentHisto
 import ManagePackages from "../pages/Dashboard/ManageServices&Packages/ManagePackages";
 import BeADecoretor from "../pages/BeADecorator/BeADecorator";
 import PrivateRoute from "./PrivateRoute";
+import ManageDecorators from "../pages/Dashboard/ManageDecorators/ManageDecorators";
 
 
 export const router = createBrowserRouter([
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
             {
                 path:'manage-packages',
                 Component: ManagePackages
+            },
+            {
+                path:'manage-decorators',
+                Component: ManageDecorators
             }
 
         ]

@@ -70,12 +70,20 @@ const DashboardLayout = () => {
                         </li>
                         {/* admin only links  */}
 
-                        {/*my Manage Service & Packages List item */}
+                        {/* Manage Service & Packages List item */}
                         <li>
                             <Link to={'/dashboard/manage-packages'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Service & Packages">
                                 {/* my Manage Service & Packages icon */}
                                 <MdMiscellaneousServices />
                                 <span className="is-drawer-close:hidden">Manage Service & Packages</span>
+                            </Link>
+                        </li>
+                        {/* Manage decorators List item */}
+                        <li>
+                            <Link to={'/dashboard/manage-decorators'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">
+                                {/*  Manage decorators icon */}
+                                <FaUsers/>
+                                <span className="is-drawer-close:hidden">Manage Decorators</span>
                             </Link>
                         </li>
                         
