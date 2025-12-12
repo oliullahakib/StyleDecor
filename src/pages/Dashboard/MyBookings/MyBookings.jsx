@@ -43,7 +43,26 @@ const MyBookings = () => {
             }
         });
     }
-    
+    const handlePayment = async(id) => {
+
+       const serviceRes = await axiosSecure.get(`/booking/${id}`)
+       const service = serviceRes.data
+        const packageInfo =
+        {
+            email: user?.email,
+            name: service.service_name,
+            bookingId: service._id,
+            cost: service.cost,
+            trakingId:service.trakingId,
+            image:service.imageUrl,
+            packageId:service.packageId
+        }
+     const res= await axiosSecure.post('/payment-checkout-session',packageInfo)
+     console.log(res.data)
+     window.location.assign(res.data)
+      
+
+    }
     return (
         <div>
           <h2 className='text-3xl'> Bookings <span className='font-bold'>({services.length})</span> </h2>
@@ -71,7 +90,7 @@ const MyBookings = () => {
                                     <td>{service.trakingId}</td>
                                     <td className={`${service?.paymentStatus ==="paid"&&'text-green-400'}`}>{service?.paymentStatus || "Unpaid"}</td>
                                     <td className='space-x-3 '>
-                                       {service.paymentStatus==="paid"?"": <button className="btn btn-success text-black">Pay</button>}
+                                       {service.paymentStatus==="paid"?"": <button onClick={()=>handlePayment(service._id)} className="btn btn-success text-black">Pay</button>}
                                         <button onClick={() => handleDelete(service._id)} className="btn hover:btn-error"><FaTrashAlt /></button>
                                     </td>
                                 </tr>)
