@@ -83,14 +83,12 @@ const ManageDecorators = () => {
                                         <td>{decorator.district}</td>
                                         <td className={decorator.status === "accepted" ? 'text-green-500' : decorator.status === "rejected" ? "text-red-500" : "text-black"}>{decorator.status}</td>
                                         <td className='space-x-3'>
-                                            <button disabled={decorator.status === "accepted" ? true : false} onClick={() => updateStatus(decorator, "accepted")} className="btn btn-primary text-black"><FaUserCheck /></button>
-                                            <button disabled={decorator.status === "rejected" ? true : false} onClick={() => updateStatus(decorator, "rejected")} className="btn btn-error text-black"><FaUserTimes /></button>
+                                            <button disabled={decorator.applyStatus === "accepted" ? true : false} onClick={() => updateStatus(decorator, "accepted")} className="btn btn-primary text-black"><FaUserCheck /></button>
+                                            <button disabled={decorator.applyStatus === "rejected" ? true : false} onClick={() => updateStatus(decorator, "rejected")} className="btn btn-error text-black"><FaUserTimes /></button>
                                             <button onClick={() => handleDeletedecorator(decorator._id)} className="btn hover:btn-error"><FaTrashAlt /></button>
                                         </td>
                                     </tr>)
                                 }
-
-
                             </tbody>
                         </table>
                     </div>
