@@ -15,7 +15,7 @@ const MyPaymentHistory = () => {
     })
     return (
          <div>
-             <h2 className='text-3xl'> Bookings <span className='font-bold'>({payments.length})</span> </h2>
+             <h2 className='text-3xl'> Payment History <span className='font-bold'>({payments.length})</span> </h2>
                     <div>
                         <div className="overflow-x-auto">
                             <table className="table">

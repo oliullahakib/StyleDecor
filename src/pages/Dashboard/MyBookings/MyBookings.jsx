@@ -75,6 +75,7 @@ const MyBookings = () => {
                                 <th>SLNo</th>
                                 <th>Name</th>
                                 <th>Amount</th>
+                                <th>Booking Date</th>
                                 <th>Transaction ID</th>
                                 <th>Payment</th>
                                 <th>Action</th>
@@ -85,13 +86,17 @@ const MyBookings = () => {
                             {
                                 services.map((service, i) => <tr key={service._id} className="bg-base-200">
                                     <th>{i + 1}</th>
-                                    <td className='font-bold'>{service.service_name}</td>
+                                    <td className='font-bold flex flex-col lg:flex-row gap-2'>
+                                       <img className='w-10 h-10 rounded-sm' src={service.imageUrl} alt="package image" />
+                                        {service.service_name}
+                                        </td>
                                     <td>{service.cost}</td>
+                                    <td>{service.date}</td>
                                     <td>{service?.paymentStatus ==="paid"&&service.transactionId}</td>
                                     <td className={`${service?.paymentStatus ==="paid"&&'text-green-400'}`}>{service?.paymentStatus || "Unpaid"}</td>
                                     <td className='space-x-3 '>
-                                       {service.paymentStatus==="paid"?"": <button onClick={()=>handlePayment(service._id)} className="btn btn-success text-black">Pay</button>}
-                                        <button onClick={() => handleDelete(service._id)} className="btn hover:btn-error"><FaTrashAlt /></button>
+                                       {service.paymentStatus==="paid"?"": <button onClick={()=>handlePayment(service._id)} className="btn btn-success text-black mb-5 xl:mb-0">Pay</button>}
+                                        <button onClick={() => handleDelete(service._id)} className="btn hover:btn-error "><FaTrashAlt /></button>
                                     </td>
                                 </tr>)
                             }
