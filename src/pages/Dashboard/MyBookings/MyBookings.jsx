@@ -93,9 +93,8 @@ const MyBookings = () => {
                                     <td>{service.cost}</td>
                                     <td>{service.date}</td>
                                     <td>{service?.paymentStatus ==="paid"&&service.transactionId}</td>
-                                    <td className={`${service?.paymentStatus ==="paid"&&'text-green-400'}`}>{service?.paymentStatus || "Unpaid"}</td>
+                                    <td className={`${service?.paymentStatus ==="paid"&&'text-green-400'}`}>{service?.paymentStatus ==="paid"? <span className='font-bold text-lg'>Paid</span> : <button onClick={()=>handlePayment(service._id)} className="btn btn-success text-black">Pay</button>}</td>
                                     <td className='space-x-3 '>
-                                       {service.paymentStatus==="paid"?"": <button onClick={()=>handlePayment(service._id)} className="btn btn-success text-black mb-5 xl:mb-0">Pay</button>}
                                         <button onClick={() => handleDelete(service._id)} className="btn hover:btn-error "><FaTrashAlt /></button>
                                     </td>
                                 </tr>)

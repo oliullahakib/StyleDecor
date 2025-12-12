@@ -3,12 +3,12 @@ import { Link, Outlet } from 'react-router';
 
 import { FaBagShopping, FaTicket } from 'react-icons/fa6';
 import { FaBiking, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
-import { MdOutlinePayments } from "react-icons/md";
+import { MdMiscellaneousServices, MdOutlinePayments } from "react-icons/md";
 import useAuth from '../hook/useAuth';
 
 const DashboardLayout = () => {
     const { user } = useAuth()
-   return (
+    return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
@@ -33,7 +33,7 @@ const DashboardLayout = () => {
 
             <div className="drawer-side is-drawer-close:overflow-visible">
                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+                <div className="flex min-h-full flex-col items-start bg-base-100 is-drawer-close:w-14 is-drawer-open:w-64">
                     {/* Sidebar content here */}
                     <ul className="menu w-full grow">
                         {/* List item */}
@@ -64,14 +64,21 @@ const DashboardLayout = () => {
                         <li>
                             <Link to={'/dashboard/my-payment-history'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Payment History">
                                 {/* my payment icon */}
-                               <MdOutlinePayments />
+                                <MdOutlinePayments />
                                 <span className="is-drawer-close:hidden">My Payment History</span>
                             </Link>
                         </li>
                         {/* admin only links  */}
+
+                        {/*my Manage Service & Packages List item */}
+                        <li>
+                            <Link to={'/dashboard/manage-packages'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Service & Packages">
+                                {/* my Manage Service & Packages icon */}
+                                <MdMiscellaneousServices />
+                                <span className="is-drawer-close:hidden">Manage Service & Packages</span>
+                            </Link>
+                        </li>
                         
-
-
                     </ul>
                 </div>
             </div>

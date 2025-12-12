@@ -11,6 +11,7 @@ import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 import PaymentSuccess from "../pages/Dashboard/PaymentSuccess/PaymentSuccess";
 import MyPaymentHistory from "../pages/Dashboard/MyPaymentHistory/MyPaymentHistory";
+import ManagePackages from "../pages/Dashboard/ManageServices&Packages/ManagePackages";
 
 
 export const router = createBrowserRouter([
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path:'my-payment-history',
                 Component: MyPaymentHistory
+            },
+            {
+                path:'manage-packages',
+                Component: ManagePackages
             }
 
         ]
