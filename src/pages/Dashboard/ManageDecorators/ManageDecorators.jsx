@@ -6,15 +6,15 @@ import useAxiosSecure from '../../../hook/useAxiosSecure';
 
 const ManageDecorators = () => {
     const axiosSecure = useAxiosSecure()
-    const { data: riders = [], refetch } = useQuery({
-        queryKey: ['rider', 'pending'],
+    const { data: decorators = [], refetch } = useQuery({
+        queryKey: ['decorator', 'pending'],
         queryFn: async () => {
             const res = await axiosSecure.get('/decorators')
 
             return res.data
         }
     })
-    const handleDeleteRider = (id) => {
+    const handleDeletedecorator = (id) => {
 
         Swal.fire({
             title: "Are you sure?",
@@ -26,13 +26,13 @@ const ManageDecorators = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/rider/${id}`)
+                axiosSecure.delete(`/decorator/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             refetch()
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Rider application has been deleted.",
+                                text: "decorator application has been deleted.",
                                 icon: "success"
                             });
                         }
@@ -42,14 +42,14 @@ const ManageDecorators = () => {
             }
         });
     }
-    const updateStatus = (rider, statusValue) => {
+    const updateStatus = (decorator, statusValue) => {
         // console.log(id,statusValue)
         const status = statusValue
-        axiosSecure.patch(`/rider/${rider._id}`, { status, email: rider.email })
+        axiosSecure.patch(`/decorator/${decorator._id}`, { status, email: decorator.email })
             .then(res => {
                 console.log(res?.data)
                 if (res.data.modifiedCount) {
-                    toast.success(`Rider is ${statusValue}`)
+                    toast.success(`decorator is ${statusValue}`)
                     refetch()
                 }
             })
@@ -58,7 +58,7 @@ const ManageDecorators = () => {
     return (
         <div>
             <div>
-                <h2 className='text-3xl'> Riders <span className='font-bold'>({riders.length})</span> </h2>
+                <h2 className='text-3xl'> Decorators <span className='font-bold'>({decorators.length})</span> </h2>
                 <div>
                     <div className="overflow-x-auto">
                         <table className="table">
@@ -76,16 +76,16 @@ const ManageDecorators = () => {
                             <tbody>
                                 {/* row 1 */}
                                 {
-                                    riders.map((rider, i) => <tr key={rider._id} className="bg-base-200">
+                                    decorators.map((decorator, i) => <tr key={decorator._id} className="bg-base-200">
                                         <th>{i + 1}</th>
-                                        <td>{rider.name}</td>
-                                        <td>{rider.email}</td>
-                                        <td>{rider.district}</td>
-                                        <td className={rider.status === "accepted" ? 'text-green-500' : rider.status === "rejected" ? "text-red-500" : "text-black"}>{rider.status}</td>
+                                        <td>{decorator.name}</td>
+                                        <td>{decorator.email}</td>
+                                        <td>{decorator.district}</td>
+                                        <td className={decorator.status === "accepted" ? 'text-green-500' : decorator.status === "rejected" ? "text-red-500" : "text-black"}>{decorator.status}</td>
                                         <td className='space-x-3'>
-                                            <button disabled={rider.status === "accepted" ? true : false} onClick={() => updateStatus(rider, "accepted")} className="btn btn-primary text-black"><FaUserCheck /></button>
-                                            <button disabled={rider.status === "rejected" ? true : false} onClick={() => updateStatus(rider, "rejected")} className="btn btn-error text-black"><FaUserTimes /></button>
-                                            <button onClick={() => handleDeleteRider(rider._id)} className="btn hover:btn-error"><FaTrashAlt /></button>
+                                            <button disabled={decorator.status === "accepted" ? true : false} onClick={() => updateStatus(decorator, "accepted")} className="btn btn-primary text-black"><FaUserCheck /></button>
+                                            <button disabled={decorator.status === "rejected" ? true : false} onClick={() => updateStatus(decorator, "rejected")} className="btn btn-error text-black"><FaUserTimes /></button>
+                                            <button onClick={() => handleDeletedecorator(decorator._id)} className="btn hover:btn-error"><FaTrashAlt /></button>
                                         </td>
                                     </tr>)
                                 }
