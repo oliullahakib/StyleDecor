@@ -75,7 +75,7 @@ const MyBookings = () => {
                                 <th>SLNo</th>
                                 <th>Name</th>
                                 <th>Amount</th>
-                                <th>Traking ID</th>
+                                <th>Transaction ID</th>
                                 <th>Payment</th>
                                 <th>Action</th>
                             </tr>
@@ -87,7 +87,7 @@ const MyBookings = () => {
                                     <th>{i + 1}</th>
                                     <td className='font-bold'>{service.service_name}</td>
                                     <td>{service.cost}</td>
-                                    <td>{service.trakingId}</td>
+                                    <td>{service?.paymentStatus ==="paid"&&service.transactionId}</td>
                                     <td className={`${service?.paymentStatus ==="paid"&&'text-green-400'}`}>{service?.paymentStatus || "Unpaid"}</td>
                                     <td className='space-x-3 '>
                                        {service.paymentStatus==="paid"?"": <button onClick={()=>handlePayment(service._id)} className="btn btn-success text-black">Pay</button>}

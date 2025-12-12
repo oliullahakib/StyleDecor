@@ -10,6 +10,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 import PaymentSuccess from "../pages/Dashboard/PaymentSuccess/PaymentSuccess";
+import MyPaymentHistory from "../pages/Dashboard/MyPaymentHistory/MyPaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path:'payment-success',
                 Component: PaymentSuccess
+            },
+            {
+                path:'my-payment-history',
+                Component: MyPaymentHistory
             }
 
         ]
