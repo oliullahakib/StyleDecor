@@ -53,7 +53,7 @@ const Register = () => {
             })
     }
     return (
-        <div className='w-full'>
+        <div className='w-full flex-1'>
             <div className="card-body  w-full justify-center items-center">
                 <form onSubmit={handleSubmit(handleRegister)} className="fieldset bg-base-200 p-4 rounded-2xl md:w-96">
                     {/* Name */}

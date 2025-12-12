@@ -12,6 +12,8 @@ import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 import PaymentSuccess from "../pages/Dashboard/PaymentSuccess/PaymentSuccess";
 import MyPaymentHistory from "../pages/Dashboard/MyPaymentHistory/MyPaymentHistory";
 import ManagePackages from "../pages/Dashboard/ManageServices&Packages/ManagePackages";
+import BeADecoretor from "../pages/BeADecorator/BeADecorator";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +46,10 @@ export const router = createBrowserRouter([
             {
                 path: "all-packages",
                 Component: AllPackages
+            },
+            {
+                path:"be-a-decorator",
+                element: <PrivateRoute><BeADecoretor/></PrivateRoute>
             }
         ]
     },

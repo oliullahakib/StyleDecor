@@ -17,7 +17,7 @@ const Login = () => {
         })
     }
     return (
-        <div className=' w-full'>
+        <div className=' w-full flex-1'>
             <div className="card-body w-full justify-center items-center">
                 <form onSubmit={handleSubmit(handleLogin)} className="fieldset md:w-96">
                     <label className="label">Email</label>
