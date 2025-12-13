@@ -45,6 +45,7 @@ const AssignDecorators = () => {
             }
         })
     }
+    console.log(bookings)
     return (
         <div>
             Bookings ({bookings?.length})

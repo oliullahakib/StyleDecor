@@ -43,11 +43,11 @@ const BeADecorator = () => {
                                  <legend className="fieldset-legend">Experty Type</legend>
                                     <select required {...register("service_type")} defaultValue="type" className="select">
                                         <option disabled={true}>type</option>
-                                        <option>Home</option>
-                                        <option>Wedding</option>
-                                        <option>Office</option>
-                                        <option>Seminar</option>
-                                        <option>Meeting</option>
+                                        <option>home</option>
+                                        <option>wedding</option>
+                                        <option>office</option>
+                                        <option>seminar</option>
+                                        <option>meeting</option>
                                     </select>
                                 </fieldset>
                                 {/*  NID */}

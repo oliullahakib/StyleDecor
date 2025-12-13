@@ -39,11 +39,11 @@ const ManagePackages = () => {
                                  <legend className="fieldset-legend">Category</legend>
                                     <select required {...register("service_category")} defaultValue="category" className="select">
                                         <option disabled={true}>category</option>
-                                        <option>Home</option>
-                                        <option>Wedding</option>
-                                        <option>Office</option>
-                                        <option>Seminar</option>
-                                        <option>Meeting</option>
+                                        <option>home</option>
+                                        <option>wedding</option>
+                                        <option>office</option>
+                                        <option>seminar</option>
+                                        <option>meeting</option>
                                     </select>
                                 </fieldset>
                                 {/*  Cost */}
