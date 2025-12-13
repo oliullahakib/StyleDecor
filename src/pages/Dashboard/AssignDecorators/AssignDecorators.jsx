@@ -5,43 +5,43 @@ import toast from 'react-hot-toast';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 
 const AssignDecorators = () => {
-    const [selectedParcel, setSelectedParcel] = useState(null)
+    const [selectedBooking, setSelectedBooking] = useState(null)
     const axiosSecure = useAxiosSecure()
-    const riderModalRef = useRef()
-    const { data: bookings = [],refetch:parcelRefetch } = useQuery({
-        queryKey: ['bookings', 'paid'],
+    const decoratorModalRef = useRef()
+    const { data: bookings = [],refetch:bookingRefetch } = useQuery({
+        queryKey: ['bookings','pending', 'paid'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/bookings?paymentStatus=paid`)
+            const res = await axiosSecure.get(`/bookings?serviceStatus=pending`)
             return res.data
         }
     })
-    // finding the rider 
-    const { data: riders = [],refetch:riderRefetch } = useQuery({
-        queryKey: ['rider', selectedParcel?.senderDistrict,'available'],
-        enabled: !!selectedParcel,
+    // finding the decorator 
+    const { data: decorators = [],refetch:decoratorRefetch } = useQuery({
+        queryKey: ['decorator', selectedBooking?.service_category],
+        enabled: !!selectedBooking,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/riders?district=${selectedParcel.senderDistrict}&workStatus=available`)
+            const res = await axiosSecure.get(`/decorators?category=${selectedBooking.service_category}`)
             return res.data
         }
     })
-    const handleFindRider = (parcel) => {
-        setSelectedParcel(parcel)
-        riderModalRef.current.showModal()
+    const handleFindDecorator = (booking) => {
+        setSelectedBooking(booking)
+        decoratorModalRef.current.showModal()
     }
-    const handleAssignRider=(rider)=>{
-        const assignRiderInfo ={
-           riderId:rider._id,
-           riderName:rider.name,
-           riderEmail:rider.email 
+    const handleAssignDecorator=(decorator)=>{
+        const assignDecoratorInfo ={
+           decoratorId:decorator._id,
+           decoratorName:decorator.name,
+           decoratorEmail:decorator.email 
         }
-        axiosSecure.patch(`/parcel/${selectedParcel._id}`,assignRiderInfo)
+        axiosSecure.patch(`/booking/${selectedBooking._id}`,assignDecoratorInfo)
         .then(res=>{
             console.log(res.data)
             if(res.data.modifiedCount){
-                riderModalRef.current.close()
+                decoratorModalRef.current.close()
                 toast.success('Rider is assign successfuly')
-                riderRefetch()
-                parcelRefetch()
+                decoratorRefetch()
+                bookingRefetch()
             }
         })
     }
@@ -70,9 +70,9 @@ const AssignDecorators = () => {
                                 <td>{booking.cost}tk</td>
                                 <td>{booking.payAt}</td>
                                 <td>{booking.service_category}</td>
-                                <td>{booking.date}</td>
+                                <td>{new Date(booking.date).toDateString()}</td>
                                 <td>
-                                    <button onClick={() => handleFindRider(booking)} className=' btn btn-primary text-black'>Find Riders</button>
+                                    <button onClick={() => handleFindDecorator(booking)} className=' btn btn-secondary text-black'>Find Decorator</button>
                                 </td>
                             </tr>)}
 
@@ -83,9 +83,9 @@ const AssignDecorators = () => {
             </div>
 
             {/* modal*/}
-            <dialog ref={riderModalRef} className="modal modal-bottom sm:modal-middle">
+            <dialog ref={decoratorModalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Rider Available({riders?.length})</h3>
+                    <h3 className="font-bold text-lg">Rider Available({decorators?.length})</h3>
                     {/* riders table  */}
                     <div>
                         <div className="overflow-x-auto">
@@ -100,12 +100,12 @@ const AssignDecorators = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {riders.map((rider,i )=><tr key={rider._id}>
+                                    {decorators.map((decorator,i )=><tr key={decorator._id}>
                                         <th>{i+1}</th>
-                                        <td>{rider?.name}</td>
-                                        <td>{rider?.email}</td>
+                                        <td>{decorator?.name}</td>
+                                        <td>{decorator?.email}</td>
                                         <td>
-                                            <button onClick={()=>handleAssignRider(rider)} className='btn btn-primary text-black'>Assign</button>
+                                            <button onClick={()=>handleAssignDecorator(decorator)} className='btn btn-primary text-black'>Assign</button>
                                         </td>
                                     </tr>)}
                                     
