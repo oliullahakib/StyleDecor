@@ -9,7 +9,7 @@ const AssignDecorators = () => {
     const axiosSecure = useAxiosSecure()
     const decoratorModalRef = useRef()
     const { data: bookings = [],refetch:bookingRefetch } = useQuery({
-        queryKey: ['bookings','pending', 'paid'],
+        queryKey: ['bookings','pending'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/bookings?serviceStatus=pending`)
             return res.data
@@ -39,7 +39,7 @@ const AssignDecorators = () => {
             console.log(res.data)
             if(res.data.modifiedCount){
                 decoratorModalRef.current.close()
-                toast.success('Rider is assign successfuly')
+                toast.success('Decorator is assign successfuly')
                 decoratorRefetch()
                 bookingRefetch()
             }
@@ -75,8 +75,6 @@ const AssignDecorators = () => {
                                     <button onClick={() => handleFindDecorator(booking)} className=' btn btn-secondary text-black'>Find Decorator</button>
                                 </td>
                             </tr>)}
-
-
                         </tbody>
                     </table>
                 </div>

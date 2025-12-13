@@ -16,6 +16,7 @@ import BeADecoretor from "../pages/BeADecorator/BeADecorator";
 import PrivateRoute from "./PrivateRoute";
 import ManageDecorators from "../pages/Dashboard/ManageDecorators/ManageDecorators";
 import AssignDecorators from "../pages/Dashboard/AssignDecorators/AssignDecorators";
+import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 
 
 export const router = createBrowserRouter([
@@ -86,6 +87,10 @@ export const router = createBrowserRouter([
             {
                 path:'assign-decorators',
                 Component: AssignDecorators
+            },
+            {
+                path:'manage-bookings',
+                Component: ManageBookings
             }
 
         ]

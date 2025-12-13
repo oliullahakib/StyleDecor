@@ -4,8 +4,7 @@ import { Link, Outlet } from 'react-router';
 import { FaBagShopping, FaTicket } from 'react-icons/fa6';
 import { FaBiking, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
 import { GrUserWorker } from "react-icons/gr";
-
-import { MdMiscellaneousServices, MdOutlinePayments } from "react-icons/md";
+import { MdMiscellaneousServices, MdOutlineManageSearch, MdOutlinePayments } from "react-icons/md";
 import useAuth from '../hook/useAuth';
 
 const DashboardLayout = () => {
@@ -87,6 +86,14 @@ const DashboardLayout = () => {
                                 {/*  Manage decorators icon */}
                                 <FaUsers/>
                                 <span className="is-drawer-close:hidden">Manage Decorators</span>
+                            </Link>
+                        </li>
+                        {/* Manage bookings item */}
+                        <li>
+                            <Link to={'/dashboard/manage-bookings'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Bookings">
+                                {/*  Manage bookings icon */}
+                                <MdOutlineManageSearch />
+                                <span className="is-drawer-close:hidden">Manage Bookings</span>
                             </Link>
                         </li>
                         {/* Assign decorators List item */}
