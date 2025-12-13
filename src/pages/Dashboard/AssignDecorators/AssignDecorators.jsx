@@ -1,17 +1,17 @@
 
 import { useQuery } from '@tanstack/react-query';
 import React, { useRef, useState } from 'react';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
 
 const AssignDecorators = () => {
     const [selectedParcel, setSelectedParcel] = useState(null)
     const axiosSecure = useAxiosSecure()
     const riderModalRef = useRef()
-    const { data: parcels = [],refetch:parcelRefetch } = useQuery({
-        queryKey: ['parcels', 'pending-pickup'],
+    const { data: bookings = [],refetch:parcelRefetch } = useQuery({
+        queryKey: ['bookings', 'paid'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/parcels?deliveryStatus=pending-pickup`)
+            const res = await axiosSecure.get(`/bookings?paymentStatus=paid`)
             return res.data
         }
     })
@@ -47,7 +47,7 @@ const AssignDecorators = () => {
     }
     return (
         <div>
-            parcels {parcels?.length}
+            Bookings ({bookings?.length})
             <div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
@@ -57,20 +57,22 @@ const AssignDecorators = () => {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Cost</th>
-                                <th>Created At</th>
-                                <th>Pickup District</th>
+                                <th>Pay At</th>
+                                <th>Booking Category</th>
+                                <th>Booking Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {parcels.map((parcel, i) => <tr key={parcel._id}>
+                            {bookings.map((booking, i) => <tr key={booking._id}>
                                 <th>{i + 1}</th>
-                                <td>{parcel.parcelName}</td>
-                                <td>{parcel.cost}tk</td>
-                                <td>{parcel.createdAt}</td>
-                                <td>{parcel.senderDistrict}</td>
+                                <td>{booking.service_name}</td>
+                                <td>{booking.cost}tk</td>
+                                <td>{booking.payAt}</td>
+                                <td>{booking.service_category}</td>
+                                <td>{booking.date}</td>
                                 <td>
-                                    <button onClick={() => handleFindRider(parcel)} className=' btn btn-primary text-black'>Find Riders</button>
+                                    <button onClick={() => handleFindRider(booking)} className=' btn btn-primary text-black'>Find Riders</button>
                                 </td>
                             </tr>)}
 

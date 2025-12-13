@@ -44,7 +44,6 @@ const MyBookings = () => {
         });
     }
     const handlePayment = async(id) => {
-
        const serviceRes = await axiosSecure.get(`/booking/${id}`)
        const service = serviceRes.data
         const packageInfo =
@@ -58,7 +57,6 @@ const MyBookings = () => {
             packageId:service.packageId
         }
      const res= await axiosSecure.post('/payment-checkout-session',packageInfo)
-     console.log(res.data)
      window.location.assign(res.data)
       
 
