@@ -9,7 +9,7 @@ import useAuth from '../../hook/useAuth';
 import useAxiosSecure from '../../hook/useAxiosSecure';
 
 const Register = () => {
-    const { creatUser, updateUser } = useAuth()
+    const { creatUser, updateUser,setLoading } = useAuth()
     const axiosSecure = useAxiosSecure()
     const [show, setShow] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -19,6 +19,7 @@ const Register = () => {
         const profileImg = data.photo[0]
         creatUser(data.email, data.password)
             .then(() => {
+                setLoading(true)
                 // make fromData 
                 const formData = new FormData()
                 formData.append("image", profileImg)
@@ -41,6 +42,7 @@ const Register = () => {
                                 axiosSecure.post('/user', userInfo)
                                     .then(() => {
                                         console.log("user saved in db")
+                                        setLoading(false)
                                     })
                                     .catch(err => {
                                         console.log(err)

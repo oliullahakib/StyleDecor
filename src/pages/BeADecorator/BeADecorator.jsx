@@ -81,7 +81,7 @@ const BeADecorator = () => {
                         {/*  Image */}
                         <fieldset className="fieldset w-full">
                             <legend className="fieldset-legend">Image URL</legend>
-                            <input required type="text" {...register("imageUrl")} placeholder='https://example.photo.url' className="input w-full" />
+                            <input required type="text" {...register("imageUrl")} defaultValue={user?.photoURL} disabled className="input w-full" />
                         </fieldset>
                         <input className='btn btn-primary mt-8 w-full' type="submit" value="Send Request" />
                     </form>
