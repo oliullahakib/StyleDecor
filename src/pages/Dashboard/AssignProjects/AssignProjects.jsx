@@ -10,7 +10,7 @@ const AssignProjects = () => {
     const { data: bookings = [], refetch } = useQuery({
         queryKey: ['booking', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/bookings/service-status?${user?.email}&status=assign`)
+            const res = await axiosSecure.get(`/bookings/service-status?email=${user?.email}&status=assign`)
             return res.data
         }
     })

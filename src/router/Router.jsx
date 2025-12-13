@@ -18,6 +18,8 @@ import ManageDecorators from "../pages/Dashboard/ManageDecorators/ManageDecorato
 import AssignDecorators from "../pages/Dashboard/AssignDecorators/AssignDecorators";
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 import AssignProjects from "../pages/Dashboard/AssignProjects/AssignProjects";
+import TodaySchedule from "../pages/Dashboard/TodaySchedule/TodaySchedule";
+
 
 
 export const router = createBrowserRouter([
@@ -96,6 +98,10 @@ export const router = createBrowserRouter([
             {
                 path:'assigned-projects',
                 Component: AssignProjects
+            },
+            {
+                path:'today-schedule',
+                Component: TodaySchedule
             }
 
         ]

@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router';
 import { FaBagShopping, FaTicket } from 'react-icons/fa6';
 import { FaBiking, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
 import { GrUserWorker } from "react-icons/gr";
+import { RiCalendarScheduleLine } from "react-icons/ri";
 import { MdMiscellaneousServices, MdOutlineManageSearch, MdOutlinePayments, MdTask } from "react-icons/md";
 import useAuth from '../hook/useAuth';
 
@@ -111,6 +112,14 @@ const DashboardLayout = () => {
                                 {/*  Assigned Projects icon */}
                                 <MdTask />
                                 <span className="is-drawer-close:hidden">Assigned Projects</span>
+                            </Link>
+                        </li>
+                         {/* Today's Schedule  */}
+                         <li>
+                            <Link to={'/dashboard/today-schedule'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Today's Schedule">
+                                {/*  Today's Schedule icon */}
+                               <RiCalendarScheduleLine />
+                                <span className="is-drawer-close:hidden">Today's Schedule</span>
                             </Link>
                         </li>
                     </ul>
