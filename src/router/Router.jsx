@@ -17,6 +17,7 @@ import PrivateRoute from "./PrivateRoute";
 import ManageDecorators from "../pages/Dashboard/ManageDecorators/ManageDecorators";
 import AssignDecorators from "../pages/Dashboard/AssignDecorators/AssignDecorators";
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
+import AssignProjects from "../pages/Dashboard/AssignProjects/AssignProjects";
 
 
 export const router = createBrowserRouter([
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
             {
                 path:'manage-bookings',
                 Component: ManageBookings
+            },
+            {
+                path:'assigned-projects',
+                Component: AssignProjects
             }
 
         ]

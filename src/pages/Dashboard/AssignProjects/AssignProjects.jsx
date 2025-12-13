@@ -1,0 +1,90 @@
+import { useQuery } from '@tanstack/react-query';
+import { FaTrashAlt, FaUserCheck, FaUserTimes } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
+import useAuth from '../../../hook/useAuth';
+
+const AssignProjects = () => {
+    const {user}=useAuth()
+    const axiosSecure = useAxiosSecure()
+    const { data: bookings = [], refetch } = useQuery({
+        queryKey: ['booking', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/bookings/service-status?${user?.email}&status=assign`)
+            return res.data
+        }
+    })
+    const updateStatus = (booking, statusValue) => {
+        // console.log(id,statusValue)
+        const status = statusValue
+         Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: `Yes, ${status==="pending"?"reject":"accept"} it!`
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axiosSecure.patch(`/booking/project/${booking._id}`, { status })
+                            .then(res => {
+                                if (res.data.modifiedCount) {
+                                    refetch()
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: `Project is ${status==="pending"?"rejected":"accepted"}.`,
+                                        icon: "success"
+                                    });
+                                }
+        
+                            })
+        
+                    }
+                });
+    }
+    return (
+        <div>
+            <div>
+                <h2 className='text-3xl'> Decorators <span className='font-bold'>({bookings.length})</span> </h2>
+                <div>
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th>SLNo</th>
+                                    <th>Projcet Name</th>
+                                    <th>Cost</th>
+                                    <th>Service Type</th>
+                                    <th>Projcet Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* row 1 */}
+                                {
+                                    bookings.map((decorator, i) => <tr key={decorator._id} className="bg-base-200">
+                                        <th>{i + 1}</th>
+                                        <td>{decorator.service_name}</td>
+                                        <td>{decorator.cost}</td>
+                                        <td>{decorator.service_category}</td>
+                                        <td >{new Date(decorator.date).toDateString()}</td>
+                                        <td className='space-x-3'>
+                                            <button onClick={() => updateStatus(decorator, "planning")} className="btn btn-success text-black"><FaUserCheck /></button>
+                                            <button onClick={() => updateStatus(decorator, "pending")} className="btn btn-error text-black"><FaUserTimes /></button>
+                                            
+                                        </td>
+                                    </tr>)
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    );
+};
+
+export default AssignProjects;

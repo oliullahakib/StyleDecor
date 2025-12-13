@@ -4,7 +4,7 @@ import { Link, Outlet } from 'react-router';
 import { FaBagShopping, FaTicket } from 'react-icons/fa6';
 import { FaBiking, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
 import { GrUserWorker } from "react-icons/gr";
-import { MdMiscellaneousServices, MdOutlineManageSearch, MdOutlinePayments } from "react-icons/md";
+import { MdMiscellaneousServices, MdOutlineManageSearch, MdOutlinePayments, MdTask } from "react-icons/md";
 import useAuth from '../hook/useAuth';
 
 const DashboardLayout = () => {
@@ -105,6 +105,14 @@ const DashboardLayout = () => {
                             </Link>
                         </li>
                         
+                         {/* decorator only links  */}
+                         <li>
+                            <Link to={'/dashboard/assigned-projects'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assigned Projects">
+                                {/*  Assigned Projects icon */}
+                                <MdTask />
+                                <span className="is-drawer-close:hidden">Assigned Projects</span>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
