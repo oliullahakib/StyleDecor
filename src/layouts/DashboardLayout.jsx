@@ -3,6 +3,8 @@ import { Link, Outlet } from 'react-router';
 
 import { FaBagShopping, FaTicket } from 'react-icons/fa6';
 import { FaBiking, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
+import { GrUserWorker } from "react-icons/gr";
+
 import { MdMiscellaneousServices, MdOutlinePayments } from "react-icons/md";
 import useAuth from '../hook/useAuth';
 
@@ -68,6 +70,7 @@ const DashboardLayout = () => {
                                 <span className="is-drawer-close:hidden">My Payment History</span>
                             </Link>
                         </li>
+
                         {/* admin only links  */}
 
                         {/* Manage Service & Packages List item */}
@@ -84,6 +87,14 @@ const DashboardLayout = () => {
                                 {/*  Manage decorators icon */}
                                 <FaUsers/>
                                 <span className="is-drawer-close:hidden">Manage Decorators</span>
+                            </Link>
+                        </li>
+                        {/* Assign decorators List item */}
+                        <li>
+                            <Link to={'/dashboard/assign-decorators'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assign Decorators">
+                                {/*  Assign decorators icon */}
+                                <GrUserWorker />
+                                <span className="is-drawer-close:hidden">Assign Decorators</span>
                             </Link>
                         </li>
                         

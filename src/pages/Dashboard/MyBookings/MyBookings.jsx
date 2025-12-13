@@ -27,7 +27,7 @@ const MyBookings = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/package/${id}`)
+                axiosSecure.delete(`/booking/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             refetch()

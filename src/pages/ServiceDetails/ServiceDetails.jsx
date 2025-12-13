@@ -36,7 +36,7 @@ const ServiceDetails = () => {
             date: new Date(e.target.date.value),
             location: e.target.location.value
         }
-        axiosSecure.post('/package', packageInfo)
+        axiosSecure.post('/booking', packageInfo)
             .then(res => {
                 if (res.data.insertedId) {
                     bookNowModalRef.current.close()
