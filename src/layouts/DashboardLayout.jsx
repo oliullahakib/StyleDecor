@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router';
 
 import { FaBagShopping, FaTicket } from 'react-icons/fa6';
 import { FaBiking, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
+import { BsCashCoin } from "react-icons/bs";
 import { GrUserWorker } from "react-icons/gr";
 import { RiCalendarScheduleLine } from "react-icons/ri";
 import { MdMiscellaneousServices, MdOutlineManageSearch, MdOutlinePayments, MdTask } from "react-icons/md";
@@ -120,6 +121,14 @@ const DashboardLayout = () => {
                                 {/*  Today's Schedule icon */}
                                <RiCalendarScheduleLine />
                                 <span className="is-drawer-close:hidden">Today's Schedule</span>
+                            </Link>
+                        </li>
+                         {/* Earnings Summary*/}
+                         <li>
+                            <Link to={'/dashboard/earnings-summary'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Earnings Summary">
+                                {/* Earnings Summary icon */}
+                               <BsCashCoin />
+                                <span className="is-drawer-close:hidden">Earnings Summary</span>
                             </Link>
                         </li>
                     </ul>

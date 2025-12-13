@@ -19,6 +19,7 @@ import AssignDecorators from "../pages/Dashboard/AssignDecorators/AssignDecorato
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 import AssignProjects from "../pages/Dashboard/AssignProjects/AssignProjects";
 import TodaySchedule from "../pages/Dashboard/TodaySchedule/TodaySchedule";
+import EarningsSummary from "../pages/Dashboard/EarningsSummary/EarningsSummary";
 
 
 
@@ -102,6 +103,10 @@ export const router = createBrowserRouter([
             {
                 path:'today-schedule',
                 Component: TodaySchedule
+            },
+            {
+                path:'earnings-summary',
+                Component: EarningsSummary
             }
 
         ]
