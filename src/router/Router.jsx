@@ -22,6 +22,7 @@ import TodaySchedule from "../pages/Dashboard/TodaySchedule/TodaySchedule";
 import EarningsSummary from "../pages/Dashboard/EarningsSummary/EarningsSummary";
 import RevenueMonitoring from "../pages/Dashboard/RevenueMonitoring/RevenueMonitoring";
 import AdminRoute from "./AdminRouter";
+import DecoratorRoute from "./DecoratorRoute";
 
 
 
@@ -100,15 +101,15 @@ export const router = createBrowserRouter([
             },
             {
                 path:'assigned-projects',
-                Component: AssignProjects
+                element: <DecoratorRoute><AssignProjects/></DecoratorRoute>
             },
             {
                 path:'today-schedule',
-                Component: TodaySchedule
+               element: <DecoratorRoute><TodaySchedule/></DecoratorRoute>
             },
             {
                 path:'earnings-summary',
-                Component: EarningsSummary
+                 element: <DecoratorRoute><EarningsSummary/></DecoratorRoute>
             },
             {
                 path:'revenue-monitoring',

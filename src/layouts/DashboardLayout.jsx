@@ -121,6 +121,7 @@ const DashboardLayout = () => {
                         </>
                         }
                         {/* decorator only links  */}
+                        {role==="decorator"&&<>
                         <li>
                             <Link to={'/dashboard/assigned-projects'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assigned Projects">
                                 {/*  Assigned Projects icon */}
@@ -144,6 +145,7 @@ const DashboardLayout = () => {
                                 <span className="is-drawer-close:hidden">Earnings Summary</span>
                             </Link>
                         </li>
+                        </>}
                     </ul>
                 </div>
             </div>
