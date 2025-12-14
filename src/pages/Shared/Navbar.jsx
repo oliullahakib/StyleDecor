@@ -53,7 +53,7 @@ const Navbar = () => {
                 <div className="navbar-end ml-5 hidden lg:flex ">
                     {
                         user ?<div className='flex gap-3'>
-                            <img className='w-12 h-12 rounded-full border p-1' src={user?.photoURL} alt="" />
+                            <img referrerPolicy='no-referrer' className='w-12 h-12 rounded-full border p-1' src={user?.photoURL} alt="" />
                              <button onClick={hanldeLogout} className='btn btn-warning'>Logout</button>
                         </div> : <>
                             <Link to={'/login'} className="btn btn-secondary mr-2">Sign In</Link>
