@@ -10,7 +10,7 @@ const [role,loading]=useRole()
     if(loading) return <Loading/>
     return (
         <div>
-            {role==="admin"?children:<Navigate state={location.pathname} to={"/login"} replace />}
+            {role==="admin"?children:<Navigate state={location.pathname} to={"/"} replace />}
         </div>
     );
 };

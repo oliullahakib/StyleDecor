@@ -9,7 +9,7 @@ const [role,loading]=useRole()
     if(loading) return <Loading/>
     return (
         <div>
-            {role==="decorator"?children:<Navigate state={location.pathname} to={"/login"} replace />}
+            {role==="decorator"?children:<Navigate state={location.pathname} to={"/"} replace />}
         </div>
     );
 };
