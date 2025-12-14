@@ -22,7 +22,7 @@ const RevenueMonitoring = () => {
     const dataObj = {}
     services.forEach(services => {
         const category = services.service_category
-        dataObj[category] = (dataObj[category] || 0) + services.cost
+        dataObj[category] = (dataObj[category] || 0) + (services.cost-services.cost*0.3)
     })
     const data = Object.keys(dataObj).map(category => ({ category, total: dataObj[category] }))
     return (
@@ -36,6 +36,7 @@ const RevenueMonitoring = () => {
                             <tr>
                                 <th>SLNo</th>
                                 <th>Service Name</th>
+                                <th>Service Category</th>
                                 <th>Project Amount</th>
                                 <th>Revenue</th>
 
@@ -49,9 +50,9 @@ const RevenueMonitoring = () => {
                                     <td className='font-bold flex flex-col lg:flex-row gap-2'>
                                         {service.service_name}
                                     </td>
+                                    <td>{service.service_category}</td>
                                     <td>{service.cost}</td>
-                                    <td>{service.cost - service.cost * .03}</td>
-
+                                    <td>{service.cost - service.cost * 0.3}</td>
                                 </tr>)
                             }
                         </tbody>
@@ -65,7 +66,7 @@ const RevenueMonitoring = () => {
                         <h1 className="text-2xl md:text-5xl my-5 font-bold text-center"> Summary Not Available </h1>
                     </div>
                         : <MyDiv className='my-3 px-3 flex flex-col justify-center'>
-                            <h1 className="text-3xl md:text-5xl momo-font linear-text  font-bold text-center"> Revenue Summary </h1>
+                            <h1 className="text-3xl md:text-5xl momo-font linear-text my-5 font-bold text-center"> Revenue Summary </h1>
                             <div className='flex justify-center '>
                                 <BarChart width={800} height={500} data={data}>
                                     <Bar barSize={50} fill='#D7636F' dataKey={"total"} />
