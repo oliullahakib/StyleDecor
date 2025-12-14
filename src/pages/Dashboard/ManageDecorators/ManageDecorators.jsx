@@ -10,7 +10,6 @@ const ManageDecorators = () => {
         queryKey: ['decorator', 'pending'],
         queryFn: async () => {
             const res = await axiosSecure.get('/decorators')
-
             return res.data
         }
     })
