@@ -8,13 +8,20 @@ import useAuth from '../../../hook/useAuth';
 const MyBookings = () => {
     const { user } = useAuth()
     const [type, setType] = useState('')
-    console.log(type)
+    const [currentPage, setCurrentPage] = useState(0)
+    const [totalPage, setTotalPage] = useState(0)
+    const [totalBooking, setTotalBooking] = useState(0)
+    const limit = 3
+    let skip = limit*currentPage
     const axiosSecure = useAxiosSecure()
     const { data: services = [], refetch } = useQuery({
-        queryKey: ['my-bookings', user?.email,type],
+        queryKey: ['my-bookings', user?.email,type,limit,currentPage,skip],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/dashboard/my-bookings?email=${user?.email}&sort=${type}`)
-            return res.data
+            const res = await axiosSecure.get(`/dashboard/my-bookings?email=${user?.email}&sort=${type}&limit=${limit}&skip=${skip}`)
+            const response=res.data
+            setTotalBooking(response.totalBooking-1)
+            setTotalPage(Math.ceil((response.totalBooking-1)/limit))
+            return response.result
 
         }
     })
@@ -60,13 +67,11 @@ const MyBookings = () => {
         }
         const res = await axiosSecure.post('/payment-checkout-session', packageInfo)
         window.location.assign(res.data)
-
-
     }
     return (
         <div>
             <div className='flex justify-between'>
-                <h2 className='text-3xl'> Bookings <span className='font-bold'>({services.length})</span> </h2>
+                <h2 className='text-3xl'> Bookings <span className='font-bold'>({totalBooking})</span> </h2>
                 {/* type sort */}
                 <div>
                     <select  defaultValue="sort by date" className="select">
@@ -115,7 +120,16 @@ const MyBookings = () => {
                     </table>
                 </div>
             </div>
+            {/* pagination  */}
+                  <div className="flex gap-2 flex-wrap container mx-auto justify-center">
+        {currentPage > 0 && <button onClick={() => setCurrentPage(currentPage - 1)} className="btn btn-secondary">Prev</button>}
+        {
+          [...Array(totalPage).keys()].map((item) => <button key={item} onClick={() => setCurrentPage(item)} className={`btn ${currentPage === item && "btn-primary"}`}>{item}</button>)
+        }
+        {currentPage < totalPage - 1 && <button onClick={() => setCurrentPage(currentPage + 1)} className="btn btn-secondary">Next</button>}
+      </div>
         </div>
+        
     );
 };
 
