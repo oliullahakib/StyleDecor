@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router';
 
 import { FaBagShopping, FaTicket } from 'react-icons/fa6';
-import { FaBiking, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
+import { FaBiking, FaChartBar, FaMotorcycle, FaUser, FaUsers } from 'react-icons/fa';
 import { BsCashCoin } from "react-icons/bs";
 import { GrUserWorker } from "react-icons/gr";
 import { RiCalendarScheduleLine } from "react-icons/ri";
@@ -104,6 +104,14 @@ const DashboardLayout = () => {
                                 {/*  Assign decorators icon */}
                                 <GrUserWorker />
                                 <span className="is-drawer-close:hidden">Assign Decorators</span>
+                            </Link>
+                        </li>
+                        {/* Revenue Monitoring */}
+                        <li>
+                            <Link to={'/dashboard/revenue-monitoring'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue Monitoring">
+                                {/*  Revenue Monitoring icon */}
+                                <FaChartBar />
+                                <span className="is-drawer-close:hidden">Revenue Monitoring</span>
                             </Link>
                         </li>
                         

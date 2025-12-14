@@ -20,6 +20,7 @@ import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 import AssignProjects from "../pages/Dashboard/AssignProjects/AssignProjects";
 import TodaySchedule from "../pages/Dashboard/TodaySchedule/TodaySchedule";
 import EarningsSummary from "../pages/Dashboard/EarningsSummary/EarningsSummary";
+import RevenueMonitoring from "../pages/Dashboard/RevenueMonitoring/RevenueMonitoring";
 
 
 
@@ -107,6 +108,10 @@ export const router = createBrowserRouter([
             {
                 path:'earnings-summary',
                 Component: EarningsSummary
+            },
+            {
+                path:'revenue-monitoring',
+                Component: RevenueMonitoring
             }
 
         ]
