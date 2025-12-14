@@ -1,10 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import useAuth from '../../../hook/useAuth';
-import { Link } from 'react-router';
 import MyDiv from '../../../components/MyDiv';
 import { Bar, BarChart, Tooltip, XAxis, YAxis } from 'recharts';
 
@@ -14,7 +10,7 @@ const RevenueMonitoring = () => {
     const { data: services = [], } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/bookings/dacorator?email=${user?.email}&serviceStatus=completed`)
+            const res = await axiosSecure.get(`/bookings/dacorator?serviceStatus=completed`)
             return res.data
         }
     })

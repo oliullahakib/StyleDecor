@@ -113,7 +113,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'revenue-monitoring',
-                element: <AdminRoute><RevenueMonitoring/></AdminRoute>
+                element: <RevenueMonitoring/>
             }
 
         ]
