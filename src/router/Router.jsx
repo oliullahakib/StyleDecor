@@ -23,6 +23,7 @@ import EarningsSummary from "../pages/Dashboard/EarningsSummary/EarningsSummary"
 import RevenueMonitoring from "../pages/Dashboard/RevenueMonitoring/RevenueMonitoring";
 import AdminRoute from "./AdminRouter";
 import DecoratorRoute from "./DecoratorRoute";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path:"be-a-decorator",
                 element: <PrivateRoute><BeADecoretor/></PrivateRoute>
+            },
+            {
+                path: "about-us",
+                Component: AboutUs
             }
         ]
     },
