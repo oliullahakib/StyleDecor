@@ -8,9 +8,13 @@ import { GrUserWorker } from "react-icons/gr";
 import { RiCalendarScheduleLine } from "react-icons/ri";
 import { MdMiscellaneousServices, MdOutlineManageSearch, MdOutlinePayments, MdTask } from "react-icons/md";
 import useAuth from '../hook/useAuth';
+import useRole from '../hook/useRole';
+import Loading from '../components/Loading';
 
 const DashboardLayout = () => {
     const { user } = useAuth()
+    const [role, loading] = useRole()
+    if (loading) return <Loading />
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -73,69 +77,70 @@ const DashboardLayout = () => {
                         </li>
 
                         {/* admin only links  */}
-
-                        {/* Manage Service & Packages List item */}
+                        {role === "admin" && <>
+                            {/* Manage Service & Packages List item */}
+                            <li>
+                                <Link to={'/dashboard/manage-packages'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Service & Packages">
+                                    {/* my Manage Service & Packages icon */}
+                                    <MdMiscellaneousServices />
+                                    <span className="is-drawer-close:hidden">Manage Service & Packages</span>
+                                </Link>
+                            </li>
+                            {/* Manage decorators List item */}
+                            <li>
+                                <Link to={'/dashboard/manage-decorators'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">
+                                    {/*  Manage decorators icon */}
+                                    <FaUsers />
+                                    <span className="is-drawer-close:hidden">Manage Decorators</span>
+                                </Link>
+                            </li>
+                            {/* Manage bookings item */}
+                            <li>
+                                <Link to={'/dashboard/manage-bookings'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Bookings">
+                                    {/*  Manage bookings icon */}
+                                    <MdOutlineManageSearch />
+                                    <span className="is-drawer-close:hidden">Manage Bookings</span>
+                                </Link>
+                            </li>
+                            {/* Assign decorators List item */}
+                            <li>
+                                <Link to={'/dashboard/assign-decorators'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assign Decorators">
+                                    {/*  Assign decorators icon */}
+                                    <GrUserWorker />
+                                    <span className="is-drawer-close:hidden">Assign Decorators</span>
+                                </Link>
+                            </li>
+                            {/* Revenue Monitoring */}
+                            <li>
+                                <Link to={'/dashboard/revenue-monitoring'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue Monitoring">
+                                    {/*  Revenue Monitoring icon */}
+                                    <FaChartBar />
+                                    <span className="is-drawer-close:hidden">Revenue Monitoring</span>
+                                </Link>
+                            </li>
+                        </>
+                        }
+                        {/* decorator only links  */}
                         <li>
-                            <Link to={'/dashboard/manage-packages'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Service & Packages">
-                                {/* my Manage Service & Packages icon */}
-                                <MdMiscellaneousServices />
-                                <span className="is-drawer-close:hidden">Manage Service & Packages</span>
-                            </Link>
-                        </li>
-                        {/* Manage decorators List item */}
-                        <li>
-                            <Link to={'/dashboard/manage-decorators'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">
-                                {/*  Manage decorators icon */}
-                                <FaUsers/>
-                                <span className="is-drawer-close:hidden">Manage Decorators</span>
-                            </Link>
-                        </li>
-                        {/* Manage bookings item */}
-                        <li>
-                            <Link to={'/dashboard/manage-bookings'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Bookings">
-                                {/*  Manage bookings icon */}
-                                <MdOutlineManageSearch />
-                                <span className="is-drawer-close:hidden">Manage Bookings</span>
-                            </Link>
-                        </li>
-                        {/* Assign decorators List item */}
-                        <li>
-                            <Link to={'/dashboard/assign-decorators'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assign Decorators">
-                                {/*  Assign decorators icon */}
-                                <GrUserWorker />
-                                <span className="is-drawer-close:hidden">Assign Decorators</span>
-                            </Link>
-                        </li>
-                        {/* Revenue Monitoring */}
-                        <li>
-                            <Link to={'/dashboard/revenue-monitoring'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue Monitoring">
-                                {/*  Revenue Monitoring icon */}
-                                <FaChartBar />
-                                <span className="is-drawer-close:hidden">Revenue Monitoring</span>
-                            </Link>
-                        </li>
-                        
-                         {/* decorator only links  */}
-                         <li>
                             <Link to={'/dashboard/assigned-projects'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assigned Projects">
                                 {/*  Assigned Projects icon */}
                                 <MdTask />
                                 <span className="is-drawer-close:hidden">Assigned Projects</span>
                             </Link>
                         </li>
-                         {/* Today's Schedule  */}
-                         <li>
+                        {/* Today's Schedule  */}
+                        <li>
                             <Link to={'/dashboard/today-schedule'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Today's Schedule">
                                 {/*  Today's Schedule icon */}
-                               <RiCalendarScheduleLine />
+                                <RiCalendarScheduleLine />
                                 <span className="is-drawer-close:hidden">Today's Schedule</span>
                             </Link>
                         </li>
-                         {/* Earnings Summary*/}
-                         <li>
+                        {/* Earnings Summary*/}
+                        <li>
                             <Link to={'/dashboard/earnings-summary'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Earnings Summary">
                                 {/* Earnings Summary icon */}
-                               <BsCashCoin />
+                                <BsCashCoin />
                                 <span className="is-drawer-close:hidden">Earnings Summary</span>
                             </Link>
                         </li>
