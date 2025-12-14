@@ -21,6 +21,7 @@ import AssignProjects from "../pages/Dashboard/AssignProjects/AssignProjects";
 import TodaySchedule from "../pages/Dashboard/TodaySchedule/TodaySchedule";
 import EarningsSummary from "../pages/Dashboard/EarningsSummary/EarningsSummary";
 import RevenueMonitoring from "../pages/Dashboard/RevenueMonitoring/RevenueMonitoring";
+import AdminRoute from "./AdminRouter";
 
 
 
@@ -83,19 +84,19 @@ export const router = createBrowserRouter([
             },
             {
                 path:'manage-packages',
-                Component: ManagePackages
+                element: <AdminRoute><ManagePackages/></AdminRoute>
             },
             {
                 path:'manage-decorators',
-                Component: ManageDecorators
+                element: <AdminRoute><ManageDecorators/></AdminRoute>
             },
             {
                 path:'assign-decorators',
-                Component: AssignDecorators
+                element: <AdminRoute><AssignDecorators/></AdminRoute>
             },
             {
                 path:'manage-bookings',
-                Component: ManageBookings
+                element: <AdminRoute><ManageBookings/></AdminRoute>
             },
             {
                 path:'assigned-projects',
@@ -111,7 +112,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'revenue-monitoring',
-                Component: RevenueMonitoring
+                element: <AdminRoute><RevenueMonitoring/></AdminRoute>
             }
 
         ]
