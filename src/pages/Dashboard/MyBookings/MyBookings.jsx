@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
@@ -7,11 +7,13 @@ import useAuth from '../../../hook/useAuth';
 
 const MyBookings = () => {
     const { user } = useAuth()
+    const [type, setType] = useState('')
+    console.log(type)
     const axiosSecure = useAxiosSecure()
     const { data: services = [], refetch } = useQuery({
-        queryKey: ['my-bookings', user?.email],
+        queryKey: ['my-bookings', user?.email,type],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/dashboard/my-bookings?email=${user?.email}`)
+            const res = await axiosSecure.get(`/dashboard/my-bookings?email=${user?.email}&sort=${type}`)
             return res.data
 
         }
@@ -43,27 +45,37 @@ const MyBookings = () => {
             }
         });
     }
-    const handlePayment = async(id) => {
-       const serviceRes = await axiosSecure.get(`/booking/${id}`)
-       const service = serviceRes.data
+    const handlePayment = async (id) => {
+        const serviceRes = await axiosSecure.get(`/booking/${id}`)
+        const service = serviceRes.data
         const packageInfo =
         {
             email: user?.email,
             name: service.service_name,
             bookingId: service._id,
             cost: service.cost,
-            trakingId:service.trakingId,
-            image:service.imageUrl,
-            packageId:service.packageId
+            trakingId: service.trakingId,
+            image: service.imageUrl,
+            packageId: service.packageId
         }
-     const res= await axiosSecure.post('/payment-checkout-session',packageInfo)
-     window.location.assign(res.data)
-      
+        const res = await axiosSecure.post('/payment-checkout-session', packageInfo)
+        window.location.assign(res.data)
+
 
     }
     return (
         <div>
-          <h2 className='text-3xl'> Bookings <span className='font-bold'>({services.length})</span> </h2>
+            <div className='flex justify-between'>
+                <h2 className='text-3xl'> Bookings <span className='font-bold'>({services.length})</span> </h2>
+                {/* type sort */}
+                <div>
+                    <select  defaultValue="sort by date" className="select">
+                        <option disabled={true}>sort by date</option>
+                        <option onClick={() => setType("desc")}>hight-low</option>
+                        <option onClick={() => setType("asc")}>low-high</option>
+                    </select>
+                </div>
+            </div>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">
@@ -85,13 +97,13 @@ const MyBookings = () => {
                                 services.map((service, i) => <tr key={service._id} className="bg-base-200">
                                     <th>{i + 1}</th>
                                     <td className='font-bold flex flex-col lg:flex-row gap-2'>
-                                       <img className='w-10 h-10 rounded-sm' src={service.imageUrl} alt="package image" />
+                                        <img className='w-10 h-10 rounded-sm' src={service.imageUrl} alt="package image" />
                                         {service.service_name}
-                                        </td>
+                                    </td>
                                     <td>{service.cost}</td>
                                     <td>{service.date}</td>
-                                    <td>{service?.paymentStatus ==="paid"&&service.transactionId}</td>
-                                    <td className={`${service?.paymentStatus ==="paid"&&'text-green-400'}`}>{service?.paymentStatus ==="paid"? <span className='font-bold text-lg'>Paid</span> : <button onClick={()=>handlePayment(service._id)} className="btn btn-success text-black">Pay</button>}</td>
+                                    <td>{service?.paymentStatus === "paid" && service.transactionId}</td>
+                                    <td className={`${service?.paymentStatus === "paid" && 'text-green-400'}`}>{service?.paymentStatus === "paid" ? <span className='font-bold text-lg'>Paid</span> : <button onClick={() => handlePayment(service._id)} className="btn btn-success text-black">Pay</button>}</td>
                                     <td className='space-x-3 '>
                                         <button onClick={() => handleDelete(service._id)} className="btn hover:btn-error "><FaTrashAlt /></button>
                                     </td>
