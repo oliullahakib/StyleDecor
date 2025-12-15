@@ -17,7 +17,7 @@ const Home = () => {
      
     return (
         <div>
-           <Banner/>
+           <Banner services={services}/>
            <Services services={services} />
            <TopDecorators/>
            <ServiceCoverage serviceCenters={serviceCenters} />
