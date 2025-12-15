@@ -36,7 +36,7 @@ const Navbar = () => {
                             {links}
                             {
                                 user ? <button onClick={hanldeLogout} className='btn btn-warning'>Logout</button> : <>
-                                    <Link to={'/login'} className="btn text-accent mr-5">Sign In</Link>
+                                    <Link to={'/login'} className="btn text-accent my-3">Sign In</Link>
                                     <Link to={'/register'} className="btn btn-primary text-black ">Register</Link>
                                 </>
                             }

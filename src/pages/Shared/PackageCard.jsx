@@ -12,7 +12,7 @@ const PackageCard = ({ service }) => {
             </figure>
             <div className="px-2 py-5 flex-1 flex flex-col justify-end">
                 <h2 className="text-sm md:text-lg">{service.service_name}</h2>
-                <p >Category: <span className='text-accent'>{service.service_category}</span> </p>
+                <p className='text-sm mt-3 md:text-lg' >Category: <span className='text-accent'>{service.service_category}</span> </p>
                 <div className=" flex-1 flex flex-col justify-end">
                     <p className='mt-5 text-sm md:text-xl'>Cost: <span className='text-accent-content font-bold'>{service.cost}tk</span> /<span className='text-[8px] lg:text-sm tex-accent'>{service.unit}</span> </p>
                    <Link to={`/package/${service._id}`} className='btn btn-primary mt-3'>View Details</Link>
