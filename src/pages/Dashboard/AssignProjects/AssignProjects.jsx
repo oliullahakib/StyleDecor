@@ -32,9 +32,9 @@ const AssignProjects = () => {
                                 if (res.data.modifiedCount) {
                                     refetch()
                                     Swal.fire({
-                                        title: "Accepted!",
+                                        title: `${status==="pending"?"Rejected":"Accepted"}`,
                                         text: `Project is ${status==="pending"?"rejected":"accepted"}.`,
-                                        icon: "success"
+                                        icon: `${status==="pending"?"error":"success"}`
                                     });
                                 }
         
@@ -46,7 +46,7 @@ const AssignProjects = () => {
     return (
         <div>
             <div>
-                <h2 className='text-3xl'> Decorators <span className='font-bold'>({bookings.length})</span> </h2>
+                <h2 className='text-3xl'> Projects <span className='font-bold'>({bookings.length})</span> </h2>
                 <div>
                     <div className="overflow-x-auto">
                         <table className="table">

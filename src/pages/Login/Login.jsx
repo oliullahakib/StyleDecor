@@ -15,6 +15,7 @@ const Login = () => {
             toast.success("Login Successfully")
             navigate(location?.state ||'/')
         })
+        .catch(err=>toast.error(err.code))
     }
     const handleGoogleLogin = async () => {
             //User Registration using google
