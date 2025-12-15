@@ -40,7 +40,7 @@ const EarningsSummary = () => {
                                         {service.service_name}
                                     </td>
                                     <td>{service.cost}</td>
-                                    <td>{service.cost*.03}</td>
+                                    <td>{service.cost*.3}</td>
                                     
                                 </tr>)
                             }

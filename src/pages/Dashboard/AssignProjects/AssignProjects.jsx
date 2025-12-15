@@ -32,7 +32,7 @@ const AssignProjects = () => {
                                 if (res.data.modifiedCount) {
                                     refetch()
                                     Swal.fire({
-                                        title: "Deleted!",
+                                        title: "Accepted!",
                                         text: `Project is ${status==="pending"?"rejected":"accepted"}.`,
                                         icon: "success"
                                     });

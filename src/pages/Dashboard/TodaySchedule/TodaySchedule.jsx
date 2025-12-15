@@ -10,7 +10,7 @@ const TodaySchedule = () => {
     const { data: bookings = [], refetch } = useQuery({
         queryKey: ['booking', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/bookings/dacorator?email=${user?.email}&status=planning`)
+            const res = await axiosSecure.get(`/bookings/dacorator?email=${user?.email}&serviceStatus=planning`)
             return res.data
         }
     })
