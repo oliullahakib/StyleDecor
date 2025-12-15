@@ -24,6 +24,7 @@ import RevenueMonitoring from "../pages/Dashboard/RevenueMonitoring/RevenueMonit
 import AdminRoute from "./AdminRouter";
 import DecoratorRoute from "./DecoratorRoute";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 
 
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
+            {
+                index:true,
+                Component:DashboardHome
+            },
             {
                 path:'my-profile',
                 Component: MyProfile
