@@ -21,11 +21,11 @@ const PaymentSuccess = () => {
     }, [axiosSecure,sesson_id])
     
     return (
-        <div className='flex flex-col justify-center items-center min-h-screen'>
+        <div className='flex flex-col justify-center items-center min-h-screen '>
           <IoBagCheckSharp size={50} color='green' />
-          <h2 className='text-2xl text-green-400 font-semibold'>Payment Success</h2>
-          <p> <span className='font-bold'>Transaction Id:</span> {paymentInfo.transactionId}</p>
-          <p> <span className='font-bold'>Traking Id:</span> {paymentInfo.trakingId} </p>
+          <h2 className='text-2xl text-green-400 font-semibold mb-5'>Payment Success</h2>
+          <p className='text-[12px] sm:text-lg'> <span className='font-bold'>Transaction Id:</span> {paymentInfo.transactionId}</p>
+          <p className='text-[12px] sm:text-lg' > <span className='font-bold'>Traking Id:</span> {paymentInfo.trakingId} </p>
         </div>
     );
 };
