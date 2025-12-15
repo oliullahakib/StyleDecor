@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import MyDiv from '../../components/MyDiv';
-import SectionTitle from '../Shared/SectionTitle';
-import useAxiosSecure from '../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import PackageCard from '../Shared/PackageCard';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 
 
@@ -15,11 +14,10 @@ const AllPackages = () => {
     const [filterHidden, setFilterHidden] = useState(true)
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(0)
-    const axiosSecure = useAxiosSecure()
     const { data: packages = [] } = useQuery({
         queryKey: ['packages', search, type,minPrice,maxPrice],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/packages?search=${search}&type=${type}&min=${minPrice}&max=${maxPrice}`)
+            const res = await axios.get(`http://localhost:3000/packages?search=${search}&type=${type}&min=${minPrice}&max=${maxPrice}`)
             return res.data
         }
     })

@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router';
+import useAuth from '../../hook/useAuth';
 
 const Footer = () => {
+    const {user}=useAuth()
     return (
         <footer className="footer footer-horizontal footer-center bg-base-300 text-base-content rounded p-10">
             <nav className="flex flex-col md:flex-row gap-4">
@@ -9,7 +11,8 @@ const Footer = () => {
         <NavLink to={'/all-packages'} className={'text-accent p-2'}>All Packages</NavLink>
         <NavLink to={'/service-coverage'} className={'text-accent p-2'}>Coverage</NavLink>
         <NavLink to={'/about-us'} className={'text-accent p-2'}>About Us</NavLink>
-        <NavLink to={'/be-a-decorator'} className={'text-accent p-2'}>Be a Decoretor</NavLink>
+        {user&& <NavLink to={'/be-a-decorator'} className={'text-accent p-2'}>Be a Decoretor</NavLink>}
+       
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4">
