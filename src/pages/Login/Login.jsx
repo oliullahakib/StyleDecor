@@ -21,7 +21,7 @@ const Login = () => {
             loginWithGoogle()
             .then(()=>{
                 toast.success("Login")
-                navigate('/')
+                navigate(location?.state ||'/')
             })   
     }
     return (

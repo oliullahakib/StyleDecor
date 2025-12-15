@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import MyDiv from '../../components/MyDiv';
-import { Link, useNavigate, useParams } from 'react-router';
+import { Link, useLocation, useNavigate, useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { FaArrowLeft } from 'react-icons/fa';
@@ -14,6 +14,7 @@ const ServiceDetails = () => {
     const axiosSecure = useAxiosSecure()
     const bookNowModalRef = useRef()
     const navigate = useNavigate()
+    const location = useLocation()
     const { data: service = {} } = useQuery({
         queryKey: ['package', id],
         queryFn: async () => {
@@ -70,7 +71,7 @@ const ServiceDetails = () => {
                         <div className='flex flex-col'>
                             <button onClick={() => {
                                 user?
-                                bookNowModalRef.current.showModal():navigate('/login')
+                                bookNowModalRef.current.showModal():navigate('/login',{state:location.pathname})
                                 }} className="btn btn-secondary w-42 mt-3">Book Now</button>
 
                         </div>
