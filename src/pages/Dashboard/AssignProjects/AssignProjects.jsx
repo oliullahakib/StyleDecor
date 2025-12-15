@@ -55,8 +55,9 @@ const AssignProjects = () => {
                                 <tr>
                                     <th>SLNo</th>
                                     <th>Projcet Name</th>
-                                    <th>Cost</th>
-                                    <th>Service Type</th>
+                                    <th>Project Cost</th>
+                                    <th>Payout Amount</th>
+                                    <th>Location</th>
                                     <th>Projcet Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -64,15 +65,16 @@ const AssignProjects = () => {
                             <tbody>
                                 {/* row 1 */}
                                 {
-                                    bookings.map((decorator, i) => <tr key={decorator._id} className="bg-base-200">
+                                    bookings.map((booking, i) => <tr key={booking._id} className="bg-base-200">
                                         <th>{i + 1}</th>
-                                        <td>{decorator.service_name}</td>
-                                        <td>{decorator.cost}</td>
-                                        <td>{decorator.service_category}</td>
-                                        <td >{new Date(decorator.date).toDateString()}</td>
+                                        <td>{booking.service_name}</td>
+                                        <td>{booking.cost}</td>
+                                        <td>{booking.cost*.3}</td>
+                                        <td>{booking.location}</td>
+                                        <td >{new Date(booking.date).toDateString()}</td>
                                         <td className='space-x-3'>
-                                            <button onClick={() => updateStatus(decorator, "planning")} className="btn btn-success text-black"><FaUserCheck /></button>
-                                            <button onClick={() => updateStatus(decorator, "pending")} className="btn btn-error text-black"><FaUserTimes /></button>
+                                            <button onClick={() => updateStatus(booking, "planning")} className="btn btn-success text-black"><FaUserCheck /></button>
+                                            <button onClick={() => updateStatus(booking, "pending")} className="btn btn-error text-black"><FaUserTimes /></button>
                                             
                                         </td>
                                     </tr>)
