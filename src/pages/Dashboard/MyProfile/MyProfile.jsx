@@ -3,9 +3,11 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import useAuth from '../../../hook/useAuth';
 import Loading from '../../../components/Loading';
+import useRole from '../../../hook/useRole';
 
 const MyProfile = () => {
     const { user,updateUser,loading,setLoading } = useAuth()
+    const[role,roleLoading]=useRole()
     const modalRef = useRef()
     const navigate = useNavigate()
     const handleUpdate = (e) => {
@@ -25,7 +27,7 @@ const MyProfile = () => {
             setLoading(false)
         })
     }
-    if(loading) return <Loading/>
+    if(loading || roleLoading) return <Loading/>
     return (
         <div>
             <div className="hero min-h-screen">
@@ -35,6 +37,7 @@ const MyProfile = () => {
                             <fieldset className="fieldset">
                                 <img className='border w-40 h-40 mx-auto rounded-full' src={user?.photoURL} alt="user" />
                                 <h2 className='text-3xl text-center momo-font linear-text'>{user.displayName}</h2>
+                                <p className='btn text-xl text-center text-secondary'>{role}</p>
                                 <p className='text-xl text-center text-secondary'>{user.email}</p>
                                 <button onClick={()=>modalRef.current.showModal()} className="btn btn-secondary mt-4">Update Profile</button>
                             </fieldset>

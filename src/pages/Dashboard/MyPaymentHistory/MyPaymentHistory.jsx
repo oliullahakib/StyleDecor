@@ -6,13 +6,14 @@ import { useQuery } from '@tanstack/react-query';
 const MyPaymentHistory = () => {
      const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
-    const { data: payments = [] } = useQuery({
+    const { data: payments = [],refetch } = useQuery({
         queryKey: ['my-payment', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/my-payment-history?email=${user?.email}`)
             return res.data
         }
     })
+    refetch()
     return (
          <div>
              <h2 className='text-3xl'> Payment History <span className='font-bold'>({payments.length})</span> </h2>

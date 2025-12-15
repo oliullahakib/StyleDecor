@@ -19,8 +19,8 @@ const MyBookings = () => {
         queryFn: async () => {
             const res = await axiosSecure.get(`/dashboard/my-bookings?email=${user?.email}&sort=${type}&limit=${limit}&skip=${skip}`)
             const response = res.data
-            setTotalBooking(response.totalBooking - 1)
-            setTotalPage(Math.ceil((response.totalBooking - 1) / limit))
+            setTotalBooking(response.totalBooking)
+            setTotalPage(Math.ceil((response.totalBooking ) / limit))
             return response.result
 
         }
