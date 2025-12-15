@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router';
 import toast from 'react-hot-toast';
 import useAuth from '../../hook/useAuth';
+import Logo from '../../components/Logo';
 
 const Navbar = () => {
     const { user, logOutUser } = useAuth()
@@ -42,7 +43,8 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                   <Link to={"/"}>StyleDecor</Link>
+                   {/* <Link to={"/"}>StyleDecor</Link> */}
+                   <Logo/>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

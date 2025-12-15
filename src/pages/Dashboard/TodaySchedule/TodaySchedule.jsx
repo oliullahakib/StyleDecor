@@ -76,7 +76,7 @@ const TodaySchedule = () => {
                                                     <button onClick={() => updateStatus(booking, "prepared")} className="btn btn-warning text-black">Prepared
                                                     </button>
                                                     : booking.serviceStatus === "prepared" ?
-                                                        <button onClick={() => updateStatus(booking, "ontheway")} className="btn btn-primary text-black">On The Way
+                                                        <button onClick={() => updateStatus(booking, "ontheway")} className="btn btn-primary w-40 text-black">On The Way
                                                         </button> :
                                                     booking.serviceStatus === "ontheway"?
                                                      <button onClick={() => updateStatus(booking, "setup")} className="btn btn-secondary text-black">Setup
