@@ -65,7 +65,7 @@ const ServiceDetails = () => {
                             {description}
                         </p>
                         <p><span className='font-bold'>Category:</span> {service_category}</p>
-                        <p className='text-sm md:text-xl'> <span className='font-bold'>Cost:</span> <span className='text-accent-content font-bold text-xl'>{cost}tk</span> /<span className='text-[8px] lg:text-sm tex-accent'>{unit}</span>
+                        <p className='text-sm md:text-xl'> <span className='font-bold'>Cost:</span> <span className='text-accent-content font-bold text-xl'>{cost}tk</span> /<span className='text-sm tex-accent'>{unit}</span>
                         </p>
                         <p><span className='font-bold'>Created by:</span> {createdByEmail}</p>
                         <div className='flex flex-col'>

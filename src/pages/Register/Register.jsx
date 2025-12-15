@@ -41,7 +41,7 @@ const Register = () => {
                                 saveOrUpdateUser( userInfo)
                                 .then(()=>{
                                     console.log("user save in db")
-                                    navigate('/')
+                                    navigate(location.state ||'/')
                                     setLoading(false)
                                 })
                             })
@@ -62,7 +62,7 @@ const Register = () => {
                 image: user?.photoURL,
             })
 
-            navigate('/')
+            navigate(location.state ||'/')
             toast.success('Signup Successful')
         } catch (err) {
             console.log(err)
