@@ -84,7 +84,7 @@ const AssignDecorators = () => {
             {/* modal*/}
             <dialog ref={decoratorModalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Rider Available({decorators?.length})</h3>
+                    <h3 className="font-bold text-lg">Decorator Available({decorators?.length})</h3>
                     {/* riders table  */}
                     <div>
                         <div className="overflow-x-auto">

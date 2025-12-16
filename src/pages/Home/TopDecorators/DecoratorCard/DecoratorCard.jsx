@@ -12,6 +12,7 @@ const DecoratorCard = ({decorator}) => {
                         </span>
                     </div>
                     <h3 className='text-accent font-semibold'>{decorator.name}</h3>
+                    <p className='text-accent'>{decorator.service_type}</p>
                 </div>
             </div>
     );
