@@ -52,8 +52,8 @@ const ServiceDetails = () => {
             .catch(err => console.log(err))
     }
     return (
-        <MyDiv>
-            <div className="hero bg-base-200 mt-10">
+        <MyDiv className={'flex-1'}>
+            <div className="hero bg-base-200 mt-10 ">
                 <div className="hero-content flex-col lg:flex-row">
                     <img
                         src={imageUrl}

@@ -11,6 +11,7 @@ const Navbar = () => {
         <li><NavLink to={'/all-packages'} className={'text-accent'}>All Packages</NavLink></li>
         <li><NavLink to={'/service-coverage'} className={'text-accent'}>Coverage</NavLink></li>
         <li><NavLink to={'/about-us'} className={'text-accent'}>About Us</NavLink></li>
+        <li><NavLink to={'/contact'} className={'text-accent'}>Contact</NavLink></li>
        {user&& <>
         <li><NavLink to={'/be-a-decorator'} className={'text-accent'}>Be a Decoretor</NavLink></li>
        <li><NavLink to={'/dashboard'} className={'text-accent-content font-bold '}>Dashboard</NavLink></li>

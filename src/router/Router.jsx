@@ -27,6 +27,8 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import Forbidden from "../components/Forbidden/Forbidden";
 import ErrorNotFound from "../components/ErrorPage/ErrorNotFound";
+import Loading from "../components/Loading";
+import Contact from "../pages/Contact/Contact";
 
 
 
@@ -38,17 +40,18 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 Component: Home,
-                loader: () => fetch(`http://localhost:3000/packages?limit=${4}`)
+                loader: () => fetch(`http://localhost:3000/packages?limit=${4}`),
+                hydrateFallbackElement:<Loading/>
             },
             {
                 path: 'service-coverage',
                 Component: ServiceCoveragePage,
-                loader: () => fetch('/serviceCenters.json')
+                loader: () => fetch('/serviceCenters.json'),
+                hydrateFallbackElement:<Loading/>
             },
             {
                 path: `/package/:id`,
-                Component: ServiceDetails,
-                errorElement:<p>Not found</p>
+                Component: ServiceDetails
             },
             {
                 path: "login",
@@ -69,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path: "about-us",
                 Component: AboutUs
+            },
+            {
+                path: "contact",
+                Component: Contact
             }
         ]
     },

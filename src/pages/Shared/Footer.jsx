@@ -18,6 +18,13 @@ const Footer = () => {
 
             </nav>
             <nav>
+                <h3 className='text-2xl'>Contact Info</h3>
+                <p> <span className='text-primary font-bold'>Hotline:</span>+8801836109573 </p>
+                <p> <span className='text-primary font-bold'>Email:</span>oliullahakib@gmail.com </p>
+                <p> <span className='text-primary font-bold'>Working hours:</span>10AM to 7PM </p>
+
+            </nav>
+            <nav>
                 <div className="grid grid-flow-col gap-4">
                     <Link target='_blank' to={'https://github.com/oliullahakib'}>
                         <FaGithub size={25} />

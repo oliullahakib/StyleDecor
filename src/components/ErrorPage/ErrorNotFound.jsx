@@ -16,7 +16,7 @@ const ErrorNotFound = () => {
       <h1 className="text-3xl font-bold text-red-500">
        Page Not Found!
       </h1>
-      <p className="text-lg text-gray-600 mt-2">
+      <p className="text-center md:text-lg text-gray-600 mt-2 px-3">
         Please contact the administrator if you believe this is an error.
       </p>
       <div className="my-3 space-x-3">
