@@ -15,7 +15,7 @@ const AssignProjects = () => {
         }
     })
     const updateStatus = (booking, statusValue) => {
-        // console.log(id,statusValue)
+       
         const status = statusValue
          Swal.fire({
                     title: "Are you sure?",

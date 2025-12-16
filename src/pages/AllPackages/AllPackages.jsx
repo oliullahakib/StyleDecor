@@ -15,9 +15,9 @@ const AllPackages = () => {
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(0)
     const { data: packages = [] } = useQuery({
-        queryKey: ['packages', search, type,minPrice,maxPrice],
+        queryKey: ['packages', search, type, minPrice, maxPrice],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:3000/packages?search=${search}&type=${type}&min=${minPrice}&max=${maxPrice}`)
+            const res = await axios.get(`https://style-decor-server-iota.vercel.app/packages?search=${search}&type=${type}&min=${minPrice}&max=${maxPrice}`)
             return res.data
         }
     })
@@ -29,7 +29,7 @@ const AllPackages = () => {
         // validation 
         if (minPrice < 0 || maxPrice < 0) return toast.error("Filter is not valid")
         if (maxPrice < minPrice) return toast.error("Max have to be bigger then Min price")
-         // assinge value 
+        // assinge value 
         setMinPrice(minPrice)
         setMaxPrice(maxPrice)
     }

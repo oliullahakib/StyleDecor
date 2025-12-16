@@ -11,7 +11,6 @@ const ServiceCoveragePage = () => {
         e.preventDefault()
         const searchValue = e.target.search.value.toLowerCase()
         const district = serviceCenters.find(center => center.district.toLowerCase().includes(searchValue))
-        console.log(district)
         const cood = [district?.latitude, district?.longitude]
         mapRef.current.flyTo(cood, 14)
     }

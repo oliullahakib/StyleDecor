@@ -7,20 +7,20 @@ import DecoratorCard from './DecoratorCard/DecoratorCard';
 import Loading from '../../../components/Loading';
 
 const TopDecorators = () => {
-    const{data:decorators,isLoading}=useQuery({
-        queryKey:['decorator'],
-        queryFn:async()=>{
-          const res = await axios('http://localhost:3000/decorators/public')
-          return res.data
+    const { data: decorators, isLoading } = useQuery({
+        queryKey: ['decorator'],
+        queryFn: async () => {
+            const res = await axios('https://style-decor-server-iota.vercel.app/decorators/public')
+            return res.data
         }
     })
-    
-    if(isLoading) return <Loading/>
+
+    if (isLoading) return <Loading />
     return (
         <MyDiv className={'mt-10'}>
             <SectionTitle className={'text-center'} title={'Top Decorators'} />
             <div className='md:w-3xl mx-auto flex flex-col md:flex-row gap-5 justify-center mt-10'>
-                {decorators.map(decorator=><DecoratorCard decorator={decorator} key={decorator._id} />)}
+                {decorators.map(decorator => <DecoratorCard decorator={decorator} key={decorator._id} />)}
             </div>
         </MyDiv>
     );

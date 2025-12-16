@@ -18,7 +18,7 @@ const ServiceDetails = () => {
     const { data: service = {} } = useQuery({
         queryKey: ['package', id],
         queryFn: async () => {
-            const res = await axios(`http://localhost:3000/package/${id}`)
+            const res = await axios(`https://style-decor-server-iota.vercel.app/package/${id}`)
             return res.data
         }
     })
@@ -70,9 +70,9 @@ const ServiceDetails = () => {
                         <p><span className='font-bold'>Created by:</span> {createdByEmail}</p>
                         <div className='flex flex-col'>
                             <button onClick={() => {
-                                user?
-                                bookNowModalRef.current.showModal():navigate('/login',{state:location.pathname})
-                                }} className="btn btn-secondary w-42 mt-3">Book Now</button>
+                                user ?
+                                    bookNowModalRef.current.showModal() : navigate('/login', { state: location.pathname })
+                            }} className="btn btn-secondary w-42 mt-3">Book Now</button>
 
                         </div>
                     </div>

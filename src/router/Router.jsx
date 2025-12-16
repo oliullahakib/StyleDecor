@@ -40,14 +40,14 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 Component: Home,
-                loader: () => fetch(`http://localhost:3000/packages?limit=${4}`),
-                hydrateFallbackElement:<Loading/>
+                loader: () => fetch(`https://style-decor-server-iota.vercel.app/packages?limit=${4}`),
+                hydrateFallbackElement: <Loading />
             },
             {
                 path: 'service-coverage',
                 Component: ServiceCoveragePage,
                 loader: () => fetch('/serviceCenters.json'),
-                hydrateFallbackElement:<Loading/>
+                hydrateFallbackElement: <Loading />
             },
             {
                 path: `/package/:id`,
@@ -66,8 +66,8 @@ export const router = createBrowserRouter([
                 Component: AllPackages
             },
             {
-                path:"be-a-decorator",
-                element: <PrivateRoute><BeADecoretor/></PrivateRoute>
+                path: "be-a-decorator",
+                element: <PrivateRoute><BeADecoretor /></PrivateRoute>
             },
             {
                 path: "about-us",
@@ -84,66 +84,66 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
             {
-                index:true,
-                Component:DashboardHome
+                index: true,
+                Component: DashboardHome
             },
             {
-                path:'my-profile',
+                path: 'my-profile',
                 Component: MyProfile
             },
             {
-                path:'my-bookings',
+                path: 'my-bookings',
                 Component: MyBookings
             },
             {
-                path:'payment-success',
+                path: 'payment-success',
                 Component: PaymentSuccess
             },
             {
-                path:'my-payment-history',
+                path: 'my-payment-history',
                 Component: MyPaymentHistory
             },
             {
-                path:'manage-packages',
-                element: <AdminRoute><ManagePackages/></AdminRoute>
+                path: 'manage-packages',
+                element: <AdminRoute><ManagePackages /></AdminRoute>
             },
             {
-                path:'manage-decorators',
-                element: <AdminRoute><ManageDecorators/></AdminRoute>
+                path: 'manage-decorators',
+                element: <AdminRoute><ManageDecorators /></AdminRoute>
             },
             {
-                path:'assign-decorators',
-                element: <AdminRoute><AssignDecorators/></AdminRoute>
+                path: 'assign-decorators',
+                element: <AdminRoute><AssignDecorators /></AdminRoute>
             },
             {
-                path:'manage-bookings',
-                element: <AdminRoute><ManageBookings/></AdminRoute>
+                path: 'manage-bookings',
+                element: <AdminRoute><ManageBookings /></AdminRoute>
             },
             {
-                path:'assigned-projects',
-                element: <DecoratorRoute><AssignProjects/></DecoratorRoute>
+                path: 'assigned-projects',
+                element: <DecoratorRoute><AssignProjects /></DecoratorRoute>
             },
             {
-                path:'today-schedule',
-               element: <DecoratorRoute><TodaySchedule/></DecoratorRoute>
+                path: 'today-schedule',
+                element: <DecoratorRoute><TodaySchedule /></DecoratorRoute>
             },
             {
-                path:'earnings-summary',
-                 element: <DecoratorRoute><EarningsSummary/></DecoratorRoute>
+                path: 'earnings-summary',
+                element: <DecoratorRoute><EarningsSummary /></DecoratorRoute>
             },
             {
-                path:'revenue-monitoring',
-                element: <RevenueMonitoring/>
+                path: 'revenue-monitoring',
+                element: <RevenueMonitoring />
             }
 
         ]
     },
     {
-        path:"/forbidden",
-        Component:Forbidden
+        path: "/forbidden",
+        Component: Forbidden
     },
     {
-        path:"/*",
-        Component:ErrorNotFound
+        path: "/*",
+        Component: ErrorNotFound
     }
 ])

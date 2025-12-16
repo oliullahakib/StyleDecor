@@ -42,7 +42,7 @@ const ManageDecorators = () => {
         });
     }
     const updateStatus = (decorator, statusValue) => {
-        // console.log(id,statusValue)
+     
         const status = statusValue
         axiosSecure.patch(`/decorator/${decorator._id}`, { status, email: decorator.email })
             .then(res => {

@@ -40,7 +40,7 @@ const Register = () => {
                                 }
                                 saveOrUpdateUser( userInfo)
                                 .then(()=>{
-                                    console.log("user save in db")
+                                
                                     navigate(location.state ||'/')
                                     setLoading(false)
                                 })
@@ -65,7 +65,6 @@ const Register = () => {
             navigate(location.state ||'/')
             toast.success('Signup Successful')
         } catch (err) {
-            console.log(err)
             toast.error(err?.message)
         }
     }
