@@ -25,6 +25,7 @@ import AdminRoute from "./AdminRouter";
 import DecoratorRoute from "./DecoratorRoute";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
+import Forbidden from "../components/Forbidden/Forbidden";
 
 
 
@@ -127,5 +128,9 @@ export const router = createBrowserRouter([
             }
 
         ]
+    },
+    {
+        path:"/forbidden",
+        Component:Forbidden
     }
 ])

@@ -22,7 +22,7 @@ const useAxiosSecure = () => {
             if(status===401 || status===403){
                 logOutUser()
                 .then(()=>{
-                    navigate('/login')
+                    navigate('/forbidden')
                 })
             }
         })
