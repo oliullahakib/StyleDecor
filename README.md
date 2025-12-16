@@ -14,9 +14,20 @@ So **Style Decor** solve those problems by: Smart appointment scheduling for con
 ----
 
 ### Key features:
+- Multi-Role Ecosystem
+- The "Assignment" Workflow
+- Integrated Payment Gateway(Stripe)
+- Advanced Service Discovery
+- Dashboard for Admin,Decorator and user
 
--Multi-Role Ecosystem
--The "Assignment" Workflow
--Integrated Payment Gateway(Stripe)
--Advanced Service Discovery
--Dashboard for Admin,Decorator and user
+----
+
+### Technologies Used:
+- Frontend:React.js
+- Backend: Node.js, Express.js
+- Authentication: firebase
+- Database: mongodb
+- Payment Gateway: Stripe
+- Map: React Leaflet
+- Styling: Tailwind CSS
+- Deployment: firebase (Frontend)
