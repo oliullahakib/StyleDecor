@@ -30,4 +30,4 @@ So **Style Decor** solve those problems by: Smart appointment scheduling for con
 - Payment Gateway: Stripe
 - Map: React Leaflet
 - Styling: Tailwind CSS
-- Deployment: firebase (Frontend)
+- Deployment: firebase (Frontend), vercel(Backend)
