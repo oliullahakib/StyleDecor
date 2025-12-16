@@ -26,6 +26,7 @@ import DecoratorRoute from "./DecoratorRoute";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import Forbidden from "../components/Forbidden/Forbidden";
+import ErrorNotFound from "../components/ErrorPage/ErrorNotFound";
 
 
 
@@ -46,7 +47,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: `/package/:id`,
-                Component: ServiceDetails
+                Component: ServiceDetails,
+                errorElement:<p>Not found</p>
             },
             {
                 path: "login",
@@ -132,5 +134,9 @@ export const router = createBrowserRouter([
     {
         path:"/forbidden",
         Component:Forbidden
+    },
+    {
+        path:"/*",
+        Component:ErrorNotFound
     }
 ])

@@ -16,6 +16,7 @@ const useAxiosSecure = () => {
         return config
         })
         const resInterceptor = instance.interceptors.response.use((response)=>{
+
             return response
         },(error)=>{
             const status = error.status

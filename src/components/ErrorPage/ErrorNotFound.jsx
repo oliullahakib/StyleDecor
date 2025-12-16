@@ -1,7 +1,7 @@
 import Lottie from "react-lottie";
-import forbiddenAnimation from "../../assets/json/forbidden.json";
+import forbiddenAnimation from "../../assets/json/Error-not-fount .json";
 import { Link } from "react-router";
-const Forbidden = () => {
+const ErrorNotFound = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <Lottie
@@ -14,7 +14,7 @@ const Forbidden = () => {
         width={200}
       ></Lottie>
       <h1 className="text-3xl font-bold text-red-500">
-        You Are Forbidden to Access This Page
+       Page Not Found!
       </h1>
       <p className="text-lg text-gray-600 mt-2">
         Please contact the administrator if you believe this is an error.
@@ -33,4 +33,4 @@ const Forbidden = () => {
   );
 };
 
-export default Forbidden;
+export default ErrorNotFound;
