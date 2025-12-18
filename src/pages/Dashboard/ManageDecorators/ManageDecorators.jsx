@@ -80,7 +80,7 @@ const ManageDecorators = () => {
                                         <td>{decorator.name}</td>
                                         <td>{decorator.email}</td>
                                         <td>{decorator.service_type}</td>
-                                        <td className={decorator.applyStatus === "accepted" ? 'text-green-500' : decorator.applyStatus === "rejected" ? "text-red-500" : "text-black"}>{decorator.applyStatus}</td>
+                                        <td className={decorator.applyStatus === "accepted" ? 'text-green-500' : decorator.applyStatus === "rejected" ? "text-red-500" : "text-secondary"}>{decorator.applyStatus}</td>
                                         <td className='space-x-3'>
                                             <button disabled={decorator.applyStatus === "accepted" ? true : false} onClick={() => updateStatus(decorator, "accepted")} className="btn btn-success text-black"><FaUserCheck /></button>
                                             <button disabled={decorator.applyStatus === "rejected" ? true : false} onClick={() => updateStatus(decorator, "rejected")} className="btn btn-error text-black"><FaUserTimes /></button>

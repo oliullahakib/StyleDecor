@@ -31,7 +31,7 @@ const MyProfile = () => {
     return (
         <div>
             <div className="hero min-h-screen">
-                <div className="hero-content bg-base-300 rounded-3xl flex-col lg:flex-row-reverse">
+                <div className="hero-content bg-base-200 rounded-3xl flex-col lg:flex-row-reverse">
                     <div className="card w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body md:h-96 md:w-96">
                             <fieldset className="fieldset">
@@ -39,7 +39,7 @@ const MyProfile = () => {
                                 <h2 className='text-3xl text-center momo-font linear-text'>{user.displayName}</h2>
                                 <p className='btn text-xl text-center text-secondary'>{role}</p>
                                 <p className='text-xl text-center text-secondary'>{user.email}</p>
-                                <button onClick={()=>modalRef.current.showModal()} className="btn btn-secondary mt-4">Update Profile</button>
+                                <button onClick={()=>modalRef.current.showModal()} className="btn btn-secondary text-black mt-4">Update Profile</button>
                             </fieldset>
                             {/* modal  */}
                             <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">

@@ -38,7 +38,7 @@ const Navbar = () => {
                             {links}
                             {
                                 user ? <button onClick={hanldeLogout} className='btn btn-warning'>Logout</button> : <>
-                                    <Link to={'/login'} className="btn text-accent my-3">Sign In</Link>
+                                    <Link to={'/login'} className="btn my-3">Sign In</Link>
                                     <Link to={'/register'} className="btn btn-primary text-black ">Register</Link>
                                 </>
                             }
@@ -59,8 +59,8 @@ const Navbar = () => {
                             <img referrerPolicy='no-referrer' className='w-12 h-12 rounded-full border p-1' src={user?.photoURL} alt="" />
                              <button onClick={hanldeLogout} className='btn btn-warning'>Logout</button>
                         </div> : <>
-                            <Link to={'/login'} className="btn btn-secondary mr-2">Sign In</Link>
-                            <Link to={'/register'} className="btn btn-primary ">Register</Link>
+                            <Link to={'/login'} className="btn btn-secondary text-black mr-2">Sign In</Link>
+                            <Link to={'/register'} className="btn btn-primary  ">Register</Link>
                         </>
                     }
                 </div>

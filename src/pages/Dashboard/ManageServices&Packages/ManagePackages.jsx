@@ -21,8 +21,8 @@ const ManagePackages = () => {
         .catch(err=>toast.error(err.message))
     }
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="card bg-base-100  max-w-sm shrink-0 shadow-2xl">
+        <div className="hero bg-base-100 min-h-screen">
+            <div className="card bg-base-200  max-w-sm shrink-0 shadow-2xl">
                 <h1 className="text-2xl md:text-5xl text-accent-content text-center mt-5 font-bold">Add Package</h1>
                 <div className="card-body w-full">
                     <form onSubmit={handleSubmit(handleAddPackage)} >

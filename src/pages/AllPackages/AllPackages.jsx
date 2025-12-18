@@ -50,7 +50,7 @@ const AllPackages = () => {
                 </div>
                 {/* sort section  */}
                 <div>
-                    <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "hidden"} mt-3 mb-4 btn-secondary`}>Filter {filterHidden && <FaArrowDown />}</button>
+                    <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "hidden"} mt-3 mb-4 btn-secondary text-black`}>Filter {filterHidden && <FaArrowDown />}</button>
                     {
                         !filterHidden && <>
                             <div className='flex flex-col-reverse lg:flex-row my-3 gap-3 items-center'>
