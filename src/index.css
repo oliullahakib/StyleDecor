@@ -11,9 +11,17 @@
   --color-accent:#8A8782;
   --color-accent-content: #BE9671;
 }
-body{
-  background: #FAF6F3;
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  --color-primary: #db650a;
+  --color-secondary: #F7DB46;
+  --color-base-200: #182A39;
+  --color-base-300: black;
+  --color-accent:#8A8782;
+  --color-accent-content: #db650a;
 }
+
 a.active{
   @apply bg-primary text-white rounded-full font-bold
 }

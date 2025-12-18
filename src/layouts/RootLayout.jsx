@@ -6,7 +6,7 @@ import Footer from '../pages/Shared/Footer';
 
 const RootLayout = () => {
     return (
-        <div className='roboto-font flex flex-col min-h-screen'>
+        <div className='roboto-font bg-base-200 flex flex-col min-h-screen'>
             <Navbar/>
            
              <Outlet/>

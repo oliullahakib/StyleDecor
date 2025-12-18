@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 const Services = ({services}) => {
     return (
-        <MyDiv className={'py-5 px-5 bg-linear-to-b from-[#efe7c37d] to-[#AF836160]'}>
+        <MyDiv className={'py-5 px-5 bg-base-200 rounded-2xl'}>
             <SectionTitle className={'text-center'} title={'Our Services'} />
             <p className='text-accent text-center w-2/3 mx-auto'>We don’t just plan events, we create experiences that live forever.
                 Your wedding or celebration is a chapter in your love story, and we ensure every detail reflects you.</p>
@@ -16,7 +16,7 @@ const Services = ({services}) => {
                 }
             </div>
            <div className='flex justify-center items-center my-10 '>
-             <Link to={'all-packages'} className='btn btn-secondary '>See All</Link>
+             <Link to={'all-packages'} className='btn border-secondary '>See All</Link>
            </div>
         </MyDiv>
     );
