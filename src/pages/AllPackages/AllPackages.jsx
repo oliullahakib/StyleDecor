@@ -54,7 +54,7 @@ const AllPackages = () => {
                     {
                         !filterHidden && <>
                             <div className='flex flex-col-reverse lg:flex-row my-3 gap-3 items-center'>
-                                <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "mt-3 mb-4 btn-secondary"}`}>Filter {!filterHidden && <FaArrowUp />}</button>
+                                <button onClick={() => setFilterHidden(!filterHidden)} className={`btn ${!filterHidden && "mt-3 mb-4 btn-secondary text-black"}`}>Filter {!filterHidden && <FaArrowUp />}</button>
                                 {/* type sort */}
                                 <div>
                                     <select onChange={(e) => setType(e.target.value)} defaultValue="sort by type" className="select">

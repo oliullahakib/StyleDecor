@@ -72,7 +72,7 @@ const ServiceDetails = () => {
                             <button onClick={() => {
                                 user ?
                                     bookNowModalRef.current.showModal() : navigate('/login', { state: location.pathname })
-                            }} className="btn btn-secondary w-42 mt-3">Book Now</button>
+                            }} className="btn btn-secondary text-black w-42 mt-3">Book Now</button>
 
                         </div>
                     </div>
