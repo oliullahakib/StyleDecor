@@ -53,7 +53,6 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                {/* <Link to={"/"}>StyleDecor</Link> */}
                 <Logo />
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -72,7 +71,7 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <p className='text-xl text-center'>{user?.displayName || "Name"}</p>
                             <p className='text-gray-400 text-center'>{user?.email ||"example@gmail.com"}</p>
-                            <Link to={'/profile'} className='font-bold  my-3'> Profile</Link>
+                            <Link to={'/my-profile'} className='font-bold  my-3'> Profile</Link>
                             {/* mode control  */}
                             <div>
                                 <input onClick={handleMode} defaultChecked={theme==="dark"} type="checkbox" className="toggle m-2" />

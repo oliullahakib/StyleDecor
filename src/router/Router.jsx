@@ -76,6 +76,10 @@ export const router = createBrowserRouter([
             {
                 path: "contact",
                 Component: Contact
+            },
+            {
+                path: "my-profile",
+                Component: MyProfile
             }
         ]
     },
