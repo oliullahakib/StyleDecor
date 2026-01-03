@@ -4,6 +4,7 @@ import TopDecorators from '../TopDecorators/TopDecorators';
 import Services from '../Services/Services';
 import ServiceCoverage from '../ServiceCoverage/ServiceCoverage';
 import { useLoaderData } from 'react-router';
+import FAQSection from '../FAQ/FAQSection';
 
 const Home = () => {
  const [serviceCenters, setServiceCenters] = useState([])
@@ -21,6 +22,7 @@ const Home = () => {
            <Services services={services} />
            <TopDecorators/>
            <ServiceCoverage serviceCenters={serviceCenters} />
+           <FAQSection/>
         </div>
     );
 };
