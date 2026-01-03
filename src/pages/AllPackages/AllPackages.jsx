@@ -6,15 +6,14 @@ import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-
-
 const AllPackages = () => {
     const [search, setSearch] = useState('')
     const [type, setType] = useState('')
     const [filterHidden, setFilterHidden] = useState(true)
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(0)
-    const { data: packages = [] } = useQuery({
+    
+    const { data: packages = [], isLoading } = useQuery({
         queryKey: ['packages', search, type, minPrice, maxPrice],
         queryFn: async () => {
             const res = await axios.get(`https://style-decor-server-iota.vercel.app/packages?search=${search}&type=${type}&min=${minPrice}&max=${maxPrice}`)
@@ -33,6 +32,41 @@ const AllPackages = () => {
         setMinPrice(minPrice)
         setMaxPrice(maxPrice)
     }
+
+   // SKELETON LOADING STATE
+    if (isLoading) {
+        return (
+            <MyDiv className={''}>
+                {/* Header Skeleton to prevent layout shift */}
+                <div className='flex flex-col lg:flex-row items-center justify-between px-3 my-8 gap-4'>
+                    <div className="h-8 w-48 bg-base-300 rounded animate-pulse"></div>
+                    <div className="h-10 w-full lg:w-80 bg-base-300 rounded animate-pulse"></div>
+                    <div className="h-10 w-24 bg-base-300 rounded animate-pulse"></div>
+                </div>
+
+                {/* Card Grid Skeleton */}
+                <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 px-3 mb-8'>
+                    {/* Generates an array of 8 items to map over */}
+                    {[...Array(8)].map((_, index) => (
+                        <div key={index} className="px-2 py-5 flex-1 flex flex-col justify-end border border-base-200 shadow-sm rounded-xl animate-pulse">
+                            {/* Image Placeholder */}
+                            <div className="h-40 w-full bg-base-300 rounded-lg mb-4"></div>
+                            
+                            {/* Title Placeholder */}
+                            <div className="h-6 w-3/4 bg-base-300 rounded mb-2"></div>
+                            
+                            {/* Subtitle/Price Placeholder */}
+                            <div className="h-4 w-1/2 bg-base-300 rounded mb-4"></div>
+                            
+                            {/* Button Placeholder */}
+                            <div className="mt-auto h-10 w-full bg-base-300 rounded-lg"></div>
+                        </div>
+                    ))}
+                </div>
+            </MyDiv>
+        );
+    }
+
     return (
         <MyDiv className={''} >
             <div className='flex flex-col lg:flex-row items-center justify-between px-3' >
