@@ -13,8 +13,15 @@ import Loading from '../components/Loading';
 import Logo from '../components/Logo';
 
 const DashboardLayout = () => {
-    const { user } = useAuth()
+    const { user,logOutUser } = useAuth()
+  
     const [role, loading] = useRole()
+        const hanldeLogout = () => {
+        logOutUser()
+            .then(() => {
+                toast.success("Logout")
+            })
+    }
     if (loading) return <Loading />
     return (
         <div className="drawer lg:drawer-open">
@@ -27,10 +34,22 @@ const DashboardLayout = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M9 4v16"></path><path d="M14 10l2 2l-2 2"></path></svg>
                     </label>
                     <div className="px-4 flex items-center">
-                        <img className='w-12 h-12 mx-3 rounded-full' src={user?.photoURL} alt="" />
-                        <div>
-                            <p className='text-accent font-bold'>{user?.displayName}</p>
-                        </div>
+                        <div className="dropdown dropdown-end">
+                                            
+                                            <div tabIndex={0} role="button" className="m-1 cursor-pointer">
+                                                <img referrerPolicy='no-referrer' className='w-12 h-12  rounded-full border p-1 ' src={user?.photoURL} alt="" /></div>
+                                              <ul
+                                                    tabIndex="-1"
+                                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                                    <p className='text-xl text-center'>{user?.displayName || "Name"}</p>
+                                                    <p className='text-gray-400 text-center'>{user?.email ||"example@gmail.com"}</p>
+                                                    <Link to={'/dashboard/my-profile'} className='font-bold  my-3'> Profile</Link>
+                                                  
+                                                    {
+                                                        user&&<button onClick={hanldeLogout} className='font-bold mt-3 btn text-black btn-error rounded-full'>Logout</button>
+                                                    }
+                                                </ul>
+                                        </div>
                     </div>
                 </nav>
                 {/* Page content here */}
