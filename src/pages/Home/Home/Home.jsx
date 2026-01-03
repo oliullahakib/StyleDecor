@@ -5,6 +5,7 @@ import Services from '../Services/Services';
 import ServiceCoverage from '../ServiceCoverage/ServiceCoverage';
 import { useLoaderData } from 'react-router';
 import FAQSection from '../FAQ/FAQSection';
+import AllCategories from '../AllCategories/AllCategories';
 
 const Home = () => {
  const [serviceCenters, setServiceCenters] = useState([])
@@ -17,9 +18,10 @@ const Home = () => {
      }, [])
      
     return (
-        <div>
+        <div className='space-y-30'>
            <Banner services={services}/>
            <Services services={services} />
+           <AllCategories/>
            <TopDecorators/>
            <ServiceCoverage serviceCenters={serviceCenters} />
            <FAQSection/>

@@ -17,9 +17,9 @@ const TopDecorators = () => {
 
     if (isLoading) return <Loading />
     return (
-        <MyDiv className={'mt-10'}>
+        <MyDiv className={''}>
             <SectionTitle className={'text-center'} title={'Top Decorators'} />
-            <div className='md:w-3xl mx-auto flex flex-col md:flex-row gap-5 justify-center mt-10'>
+            <div className='md:w-3xl mx-auto flex flex-col md:flex-row gap-5 justify-center mt-8'>
                 {decorators.map(decorator => <DecoratorCard decorator={decorator} key={decorator._id} />)}
             </div>
         </MyDiv>

@@ -6,11 +6,11 @@ const ServiceCoverage = ({serviceCenters}) => {
     const position = [23.68, 90.35]
     return (
         <MyDiv>
-            <SectionTitle title={'Service Coverage'}/>
+            <SectionTitle className={'mb-8'} title={'Service Coverage'}/>
             {/* map  */}
             <MyDiv>
                 
-                <div className='min-h-96 mt-10 mb-12 '>
+                <div className='min-h-96 '>
                     <MapContainer  className='w-full h-[550px]' center={position} zoom={7} scrollWheelZoom={false} >
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
