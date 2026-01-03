@@ -34,7 +34,6 @@ const Navbar = () => {
          
     }
     return (
-
         <div className="navbar sticky top-0 z-10 bg-base-200 container mx-auto rounded-xl shadow-sm ">
             <div className="navbar-start">
                 <div className="dropdown">
@@ -44,28 +43,23 @@ const Navbar = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        {links}
-                        {
-                            user ? <button onClick={hanldeLogout} className='btn btn-warning'>Logout</button> : <>
-                                <Link to={'/login'} className="btn my-3">Sign In</Link>
-                                <Link to={'/register'} className="btn btn-primary text-black ">Register</Link>
-                            </>
-                        }
+                        {links}  
                     </ul>
                 </div>
                 <Logo />
+               
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end ml-5 hidden lg:flex ">
-                
+            <div className="navbar-end ml-5 lg:flex ">       
                 {
                     user ?<div className="dropdown dropdown-end">
                     
-                    <div tabIndex={0} role="button" className="m-1 cursor-pointer"><img referrerPolicy='no-referrer' className='w-12 h-12 rounded-full border p-1' src={user?.photoURL} alt="" /></div>
+                    <div tabIndex={0} role="button" className="m-1 cursor-pointer">
+                        <img referrerPolicy='no-referrer' className='w-12 h-12  rounded-full border p-1 ' src={user?.photoURL} alt="" /></div>
                       <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
@@ -80,8 +74,6 @@ const Navbar = () => {
                             {
                                 user&&<button onClick={hanldeLogout} className='font-bold mt-3 btn text-black btn-error rounded-full'>Logout</button>
                             }
-                            
-                            
                         </ul>
                 </div>: <>
                         <Link to={'/login'} className="btn btn-secondary text-black mr-2">Sign In</Link>
