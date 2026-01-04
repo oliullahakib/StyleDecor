@@ -11,6 +11,7 @@ import useAuth from '../hook/useAuth';
 import useRole from '../hook/useRole';
 import Loading from '../components/Loading';
 import Logo from '../components/Logo';
+import toast from 'react-hot-toast';
 
 const DashboardLayout = () => {
     const { user,logOutUser } = useAuth()
