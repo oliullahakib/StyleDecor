@@ -4,6 +4,7 @@ import useRole from '../../../hook/useRole';
 import Loading from '../../../components/Loading';
 import UserDashboard from './UserDashboard/UserDashboard';
 import DecoratorDashboard from './DecoratorDashboard/DecoratorDashboard';
+import AdminDashboard from './AdminDashboard/AdminDashboard';
 
 const DashboardHome = () => {
     const [role,loading] = useRole()
@@ -16,7 +17,7 @@ const DashboardHome = () => {
             role === "user" && <UserDashboard/>
            }
            {
-            role === "admin" && <p>Admin</p>
+            role === "admin" && <AdminDashboard/>
            }
            {
             role === "decorator" && <DecoratorDashboard/>
