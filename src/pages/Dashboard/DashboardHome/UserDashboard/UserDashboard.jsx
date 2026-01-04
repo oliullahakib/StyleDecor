@@ -20,7 +20,6 @@ const UserDashboard = () => {
     })
     if(isLoading) return <Loading/>
     const pendingPayment = bookings.filter(booking=>booking.paymentStatus!=="paid")
-    console.log(pendingPayment)
     return (
         <MyDiv>
             <div className='grid md:grid-cols-2 gap-5'>

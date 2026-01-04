@@ -3,10 +3,10 @@ import React from 'react';
 import useRole from '../../../hook/useRole';
 import Loading from '../../../components/Loading';
 import UserDashboard from './UserDashboard/UserDashboard';
+import DecoratorDashboard from './DecoratorDashboard/DecoratorDashboard';
 
 const DashboardHome = () => {
     const [role,loading] = useRole()
-    console.log(role)
     if(loading) return <Loading/>
     // return <Navigate to={"/dashboard/my-profile"}/>
   
@@ -16,10 +16,10 @@ const DashboardHome = () => {
             role === "user" && <UserDashboard/>
            }
            {
-            role === "admin" && <p>User</p>
+            role === "admin" && <p>Admin</p>
            }
            {
-            role === "seller" && <p>Seller</p>
+            role === "decorator" && <DecoratorDashboard/>
            }
         </div>
     )
