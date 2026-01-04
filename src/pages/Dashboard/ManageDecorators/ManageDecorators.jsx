@@ -46,7 +46,7 @@ const ManageDecorators = () => {
         const status = statusValue
         axiosSecure.patch(`/decorator/${decorator._id}`, { status, email: decorator.email })
             .then(res => {
-                console.log(res?.data)
+                
                 if (res.data.modifiedCount) {
                     toast.success(`decorator is ${statusValue}`)
                     refetch()

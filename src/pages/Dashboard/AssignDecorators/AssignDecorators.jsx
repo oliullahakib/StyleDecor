@@ -36,7 +36,7 @@ const AssignDecorators = () => {
         }
         axiosSecure.patch(`/booking/${selectedBooking._id}`,assignDecoratorInfo)
         .then(res=>{
-            console.log(res.data)
+            
             if(res.data.modifiedCount){
                 decoratorModalRef.current.close()
                 toast.success('Decorator is assign successfuly')
@@ -45,7 +45,7 @@ const AssignDecorators = () => {
             }
         })
     }
-    console.log(bookings)
+   
     return (
         <div>
             Bookings ({bookings?.length})
